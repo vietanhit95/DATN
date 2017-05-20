@@ -1,0 +1,143 @@
+﻿<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>RaoVat Online | Đăng ký</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!--fonts-->
+    <!--//fonts-->
+    <!-- js -->
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
+    <!-- js -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.js"></script>
+    <script>
+        $(document).ready(function () {
+            var mySelect = $('#first-disabled2');
+
+            $('#special').on('click', function () {
+                mySelect.find('option:selected').prop('disabled', true);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#special2').on('click', function () {
+                mySelect.find('option:disabled').prop('disabled', false);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#basic2').selectpicker({
+                liveSearch: true,
+                maxOptions: 1
+            });
+        });
+    </script>
+    <script type="text/javascript" src="~/Content/js/jquery.leanModal.min.js"></script>
+    <link href="~/Content/css/jquery.uls.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.uls.grid.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.uls.lcd.css" rel="stylesheet" />
+    <!-- Source -->
+    <script src="~/Content/js/jquery.uls.data.js"></script>
+    <script src="~/Content/js/jquery.uls.data.utils.js"></script>
+    <script src="~/Content/js/jquery.uls.lcd.js"></script>
+    <script src="~/Content/js/jquery.uls.languagefilter.js"></script>
+    <script src="~/Content/js/jquery.uls.regionfilter.js"></script>
+    <script src="~/Content/js/jquery.uls.core.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.uls-trigger').uls({
+                onSelect: function (language) {
+                    var languageName = $.uls.data.getAutonym(language);
+                    $('.uls-trigger').text(languageName);
+                },
+                quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="/Page/Home"><span>RaoVat</span>Online</a>
+            </div>
+        </div>
+    </div>
+    <section>
+        <div id="page-wrapper" class="sign-in-wrapper">
+            <div class="graphs">
+                <div class="sign-up">
+                    <h1>Tạo tài khoản</h1>
+                    <h2>Thông tin cá nhân</h2>
+                    <div class="sign-u">
+                        <div class="sign-up1">
+                            <h4>Tên đăng nhập* :</h4>
+                        </div>
+                        <div class="sign-up2">
+                            <form>
+                                <input type="text" placeholder=" " required=" " />
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="sign-u">
+                        <div class="sign-up1">
+                            <h4>Mật khẩu* :</h4>
+                        </div>
+                        <div class="sign-up2">
+                            <form>
+                                <input type="password" placeholder=" " required=" " />
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="sign-u">
+                        <div class="sign-up1">
+                            <h4>Nhập lại mật khẩu* :</h4>
+                        </div>
+                        <div class="sign-up2">
+                            <form>
+                                <input type="password" placeholder=" " required=" " />
+                            </form>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <div class="sub_home">
+                        <div class="sub_home_left">
+                            <form>
+                                <input type="submit" value="Create">
+                            </form>
+                        </div>
+                        <div class="sub_home_right">
+                            <p>Quay về <a href="/Page/Home">Trang chủ</a></p>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer section start-->
+        <footer class="diff">
+            <p class="text-center">&copy 2017 RaoVat Online. All Rights Reserved | Design by <a href="https://facebook.com/Anhnv.sd95" target="_blank">Viet Anh Nguyen</a></p>
+        </footer>
+        <!--footer section end-->
+    </section>
+</body>
+</html>
