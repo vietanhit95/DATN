@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ADS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ADS_DBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Article">
           <Key>
             <PropertyRef Name="Id" />
@@ -23,21 +23,6 @@
           <Property Name="ArticleId" Type="int" />
           <Property Name="CardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
-        <EntityType Name="Article_Free">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Article_Content" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Article_ImgId" Type="int" />
-          <Property Name="Article_ProvinceId" Type="int" />
-          <Property Name="Price" Type="float" />
-          <Property Name="Phone" Type="int" />
-          <Property Name="Created_Date" Type="date" />
-          <Property Name="Status" Type="nvarchar" MaxLength="1" />
-          <Property Name="ArticleId" Type="int" />
-          <Property Name="CategoryId" Type="int" />
-        </EntityType>
         <EntityType Name="Card">
           <Key>
             <PropertyRef Name="Id" />
@@ -55,6 +40,7 @@
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="Status" Type="nvarchar" MaxLength="1" />
           <Property Name="CategoryId" Type="int" />
+          <Property Name="ArticleId" Type="int" />
         </EntityType>
         <EntityType Name="Custommer">
           <Key>
@@ -68,6 +54,9 @@
           <Property Name="ProvinceId" Type="int" />
           <Property Name="TypeUser" Type="int" />
           <Property Name="Status" Type="nvarchar" MaxLength="1" />
+          <Property Name="PhoneNumber" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="Free_Article_Id" Type="int" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -76,6 +65,22 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
           <Property Name="DistrictId" Type="int" />
+        </EntityType>
+        <EntityType Name="Free_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Decreption" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Title" Type="nvarchar" MaxLength="500" />
+          <Property Name="ImageId" Type="int" />
+          <Property Name="ProvinceId" Type="int" />
+          <Property Name="CustommerId" Type="int" />
+          <Property Name="Price" Type="float" />
+          <Property Name="CreateDate" Type="date" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Free_Article_Id" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -118,18 +123,17 @@
         </EntityType>
         <EntityContainer Name="ADS_DBModelStoreContainer">
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Article_Free" EntityType="Self.Article_Free" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Custommer" EntityType="Self.Custommer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Free_Article" EntityType="Self.Free_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ADS_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -151,21 +155,6 @@
           <Property Name="ArticleId" Type="Int32" />
           <Property Name="CardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
         </EntityType>
-        <EntityType Name="Article_Free">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Article_Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Article_ImgId" Type="Int32" />
-          <Property Name="Article_ProvinceId" Type="Int32" />
-          <Property Name="Price" Type="Double" />
-          <Property Name="Phone" Type="Int32" />
-          <Property Name="Created_Date" Type="DateTime" Precision="0" />
-          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-          <Property Name="ArticleId" Type="Int32" />
-          <Property Name="CategoryId" Type="Int32" />
-        </EntityType>
         <EntityType Name="Card">
           <Key>
             <PropertyRef Name="Id" />
@@ -183,6 +172,7 @@
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ArticleId" Type="Int32" />
         </EntityType>
         <EntityType Name="Custommer">
           <Key>
@@ -196,6 +186,9 @@
           <Property Name="ProvinceId" Type="Int32" />
           <Property Name="TypeUser" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Free_Article_Id" Type="Int32" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -246,7 +239,6 @@
         </EntityType>
         <EntityContainer Name="ADS_Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Articles" EntityType="Self.Article" />
-          <EntitySet Name="Article_Free" EntityType="Self.Article_Free" />
           <EntitySet Name="Cards" EntityType="Self.Card" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Custommers" EntityType="Self.Custommer" />
@@ -255,7 +247,24 @@
           <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="Staffs" EntityType="Self.Staff" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="Free_Article" EntityType="ADS_DBModel.Free_Article" />
         </EntityContainer>
+        <EntityType Name="Free_Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Decreption" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ImageId" Type="Int32" />
+          <Property Name="ProvinceId" Type="Int32" />
+          <Property Name="CustommerId" Type="Int32" />
+          <Property Name="Price" Type="Double" />
+          <Property Name="CreateDate" Type="DateTime" Precision="0" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="Free_Article_Id" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -281,22 +290,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Article_Free">
-            <EntityTypeMapping TypeName="ADS_DBModel.Article_Free">
-              <MappingFragment StoreEntitySet="Article_Free">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
-                <ScalarProperty Name="Article_ImgId" ColumnName="Article_ImgId" />
-                <ScalarProperty Name="Article_ProvinceId" ColumnName="Article_ProvinceId" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Cards">
             <EntityTypeMapping TypeName="ADS_DBModel.Card">
               <MappingFragment StoreEntitySet="Card">
@@ -310,6 +303,7 @@
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="ADS_DBModel.Category">
               <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -320,6 +314,9 @@
           <EntitySetMapping Name="Custommers">
             <EntityTypeMapping TypeName="ADS_DBModel.Custommer">
               <MappingFragment StoreEntitySet="Custommer">
+                <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -380,6 +377,23 @@
                 <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Free_Article">
+            <EntityTypeMapping TypeName="ADS_DBModel.Free_Article">
+              <MappingFragment StoreEntitySet="Free_Article">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Decreption" ColumnName="Decreption" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,0 +1,64 @@
+﻿@model  ADS.APP.Models.ArticleViewModel
+@{
+    ViewBag.Title = "ArticleCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="submit-ad main-grid-border">
+    <div class="container">
+        <h2 class="head">Đăng bài</h2>
+
+        <div class="post-ad-form">
+            @using (Html.BeginForm("ArticleFreeAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <label>Danh mục <span>*</span></label>
+                <select name="select">
+                    <option>Danh mục đăng bài</option>
+                    <option>Xe máy</option>
+                </select>
+                <div class="clearfix"></div>
+                <label>Tiêu đề <span>*</span></label>
+                @Html.TextBoxFor(n => n.Article.Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng"})
+                @Html.ValidationMessageFor(n => n.Article.Title)
+                <div class="clearfix"></div>
+                <label>Nội dung <span>*</span></label>
+                @Html.TextAreaFor(n => n.Article.Decreption, new { @class = "mess", @placeholder = "Mô tả về sản phẩm bạn đăng" })
+                @Html.ValidationMessageFor(n => n.Article.Decreption)
+                <div class="clearfix"></div>
+                <div class="upload-ad-photos">
+                    <label>Hình ảnh :</label>
+                    <div class="photos-upload-view">
+                        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+                        <div>
+                            <input type="file" id="fileselect" name="fileselect" multiple="multiple" />
+                        </div>
+                        <div id="messages">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <script src="~/Content/js/filedrag.js"></script>
+                </div>
+                <div class="personal-details">
+                    <label>Họ tên <span>*</span></label>
+                    @Html.TextBoxFor(n => n.Cus.FullName, new { @class = "name" })
+                    @Html.ValidationMessageFor(n => n.Cus.FullName)
+                    <div class="clearfix"></div>
+                    <label>Số điện thoại <span>*</span></label>
+                    @Html.TextBoxFor(n => n.Cus.PhoneNumber, new { @class = "phone" })
+                    @Html.ValidationMessageFor(n => n.Cus.PhoneNumber)
+                    <div class="clearfix"></div>
+                    <label>Địa chỉ Email<span>*</span></label>
+                    @Html.TextBoxFor(n => n.Cus.Email, new { @class = "email" })
+                    @Html.ValidationMessageFor(n => n.Cus.Email)
+                    <div class="clearfix"></div>
+                    <p class="post-terms">Đồng ý ấn nút <strong>Đăng bài</strong> thì bạn sẽ phải chấp nhận <a href="terms.html" target="_blank">Điều Khoản Sử Dụng </a> và <a href="privacy.html" target="_blank">Chính Sách Bảo Mật của Chúng Tôi</a></p>
+                    <input type="submit" value="Đăng Bài">
+                    <div class="clearfix"></div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>

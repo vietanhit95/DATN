@@ -20,22 +20,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Article_Free">
-      <EntityTypeMapping TypeName="ADS_DBModel.Article_Free">
-        <MappingFragment StoreEntitySet="Article_Free">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
-          <ScalarProperty Name="Article_ImgId" ColumnName="Article_ImgId" />
-          <ScalarProperty Name="Article_ProvinceId" ColumnName="Article_ProvinceId" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cards">
       <EntityTypeMapping TypeName="ADS_DBModel.Card">
         <MappingFragment StoreEntitySet="Card">
@@ -49,6 +33,7 @@
     <EntitySetMapping Name="Categories">
       <EntityTypeMapping TypeName="ADS_DBModel.Category">
         <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Status" ColumnName="Status" />
@@ -59,6 +44,9 @@
     <EntitySetMapping Name="Custommers">
       <EntityTypeMapping TypeName="ADS_DBModel.Custommer">
         <MappingFragment StoreEntitySet="Custommer">
+          <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -119,6 +107,23 @@
           <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
           <ScalarProperty Name="version" ColumnName="version" />
           <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Free_Article">
+      <EntityTypeMapping TypeName="ADS_DBModel.Free_Article">
+        <MappingFragment StoreEntitySet="Free_Article">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Decreption" ColumnName="Decreption" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

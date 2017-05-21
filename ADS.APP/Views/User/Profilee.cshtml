@@ -1,16 +1,16 @@
-﻿<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+﻿
 @{
     Layout = null;
+    ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
+    if (Session["Login"] != null)
+    {
+        cus = (ADS.APP.Models.Custommer)Session["Login"];
+    }
 }
 <!DOCTYPE html>
 <html>
 <head>
-    <title>RaoVat Online | Đăng ký</title>
+    <title>RaoVat Online | Thông tin người dùng</title>
     <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
     <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
     <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
@@ -83,69 +83,70 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <section>
         <div id="page-wrapper" class="sign-in-wrapper">
             <div class="graphs">
+                @using (Html.BeginForm("Logout", "User", FormMethod.Post))
+                {
+                    <div class="sign-up">
+                        <h2>Thông tin cá nhân</h2>
+                        @if (cus != null)
+                        {
+                            <div class="sign-u">
+                                <div class="sign-up1">
+                                    <h4>Họ và tên</h4>
+                                </div>
+                                <div class="sign-up2">
+                                    <input type="text" name="fullname" value="@cus.FullName" readonly="readonly" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="sign-u">
+                                <div class="sign-up1">
+                                    <h4>Tên đăng nhập</h4>
+                                </div>
+                                <div class="sign-up2">
+                                    <input type="text" name="username" value="@cus.UserName" readonly="readonly" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="sign-u">
+                                <div class="sign-up1">
+                                    <h4>Mật khẩu</h4>
+                                </div>
+                                <div class="sign-up2">
+                                    <input type="password" value="@cus.PassWord" readonly="readonly" name="pass" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="sign-u">
+                                <div class="sign-up1">
+                                    <h4>Địa chỉ Email</h4>
+                                </div>
+                                <div class="sign-up2">
+                                    <input type="text" value="@cus.Email" readonly="readonly" name="email" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="sign-u">
+                                <div class="sign-up1">
+                                    <h4>Số điện thoại</h4>
+                                </div>
+                                <div class="sign-up2">
+                                    <input type="text" value="@cus.PhoneNumber" readonly="readonly" name="phone" />
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                            <div class="sub_home">
+                                <div class="sub_home_left">
+                                    <p>Quay về <a href="/Page/Home">Trang chủ</a></p>
+                                </div>
+                                <div class="sub_home_right">
+                                    <input type="submit" value="Đăng xuất">
+                                </div>
+                                <div class="clearfix"> </div>
+                            </div>
+                        }
 
-                <div class="sign-up">
-                    <h1>Tạo tài khoản</h1>
-                    <h2>Thông tin cá nhân</h2>
-                    @using (Html.BeginForm("CustommerCreate", "User", FormMethod.Post))
-                    {
-                        <div class="sign-u">
-                            <div class="sign-up1">
-                                <h4>Họ và tên</h4>
-                            </div>
-                            <div class="sign-up2">
-                                <input type="text" name="fullname" placeholder="Họ và Tên" required="" />
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="sign-u">
-                            <div class="sign-up1">
-                                <h4>Tên đăng nhập</h4>
-                            </div>
-                            <div class="sign-up2">
-                                <input type="text" name="username" placeholder="Tên đăng nhập" required="" />
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="sign-u">
-                            <div class="sign-up1">
-                                <h4>Mật khẩu</h4>
-                            </div>
-                            <div class="sign-up2">
-                                <input type="password" name="pass" placeholder="Mật khẩu" required="" />
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="sign-u">
-                            <div class="sign-up1">
-                                <h4>Địa chỉ Email</h4>
-                            </div>
-                            <div class="sign-up2">
-                                <input type="text" name="email"  placeholder="Địa chỉ Email" required="" />
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="sign-u">
-                            <div class="sign-up1">
-                                <h4>Số điện thoại</h4>
-                            </div>
-                            <div class="sign-up2">
-                                <input type="text" name="phone" placeholder="Nhập số điện thoại" required="" />
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                        <div class="sub_home">
-                            <div class="sub_home_left">
-                                <p>Quay về <a href="/Page/Home">Trang chủ</a></p>
-                            </div>
-                            <div class="sub_home_right">
-                                <input type="submit" value="Tạo tài khoản">
-                            </div>
-                            <div class="clearfix"> </div>
-                        </div>
-                    }
-                </div>
-
+                    </div>
+                }
             </div>
         </div>
         <!--footer section start-->
@@ -158,3 +159,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </html>
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+

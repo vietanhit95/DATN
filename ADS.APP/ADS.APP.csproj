@@ -5410,6 +5410,7 @@
     <Content Include="Content\css\bootstrap-select.css" />
     <Content Include="Content\css\bootstrap.min.css" />
     <Content Include="Content\css\easy-responsive-tabs.css" />
+    <Content Include="Content\css\fine-uploader-new.css" />
     <Content Include="Content\css\flexslider.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\css\jquery-ui1.css" />
@@ -5477,6 +5478,7 @@
     <Content Include="Content\images\cat7.png" />
     <Content Include="Content\images\cat8.png" />
     <Content Include="Content\images\cat9.png" />
+    <Content Include="Content\images\checked %281%29.png" />
     <Content Include="Content\images\client_1.jpg" />
     <Content Include="Content\images\client_2.jpg" />
     <Content Include="Content\images\client_3.jpg" />
@@ -5607,6 +5609,7 @@
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\easyResponsiveTabs.js" />
     <Content Include="Content\js\filedrag.js" />
+    <Content Include="Content\js\fine-uploader.js" />
     <Content Include="Content\js\jquery-1.10.2.js" />
     <Content Include="Content\js\jquery-ui.js" />
     <Content Include="Content\js\jquery.fileupload.js" />
@@ -5692,9 +5695,7 @@
     <Compile Include="Models\Article.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Article_Free.cs">
-      <DependentUpon>ADS_DB.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Models\ArticleViewModel.cs" />
     <Compile Include="Models\Card.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
@@ -5706,6 +5707,9 @@
     </Compile>
     <Compile Include="Models\CustommerViewModels.cs" />
     <Compile Include="Models\District.cs">
+      <DependentUpon>ADS_DB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Free_Article.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Image.cs">
@@ -6099,9 +6103,13 @@
     <Content Include="Views\Shared\_BanerPartial.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Page\Home.cshtml" />
-    <Content Include="Views\Article\Index.cshtml" />
+    <Content Include="Views\Article\ArticleCreate.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\SingUp.cshtml" />
+    <Content Include="Views\Article\ListProduct.cshtml" />
+    <Content Include="Views\Article\Detail.cshtml" />
+    <Content Include="Views\Article\PageSuccess.cshtml" />
+    <Content Include="Views\User\Profilee.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6115,6 +6123,7 @@
     <Folder Include="Areas\Admin\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\uploads\" />
+    <Folder Include="Image\User\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

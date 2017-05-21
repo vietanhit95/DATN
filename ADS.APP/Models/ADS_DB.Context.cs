@@ -26,7 +26,6 @@ namespace ADS.APP.Models
         }
     
         public DbSet<Article> Articles { get; set; }
-        public DbSet<Article_Free> Article_Free { get; set; }
         public DbSet<Card> Cards { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Custommer> Custommers { get; set; }
@@ -35,5 +34,6 @@ namespace ADS.APP.Models
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
+        public DbSet<Free_Article> Free_Article { get; set; }
     }
 }

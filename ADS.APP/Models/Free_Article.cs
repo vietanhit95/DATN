@@ -12,17 +12,18 @@ namespace ADS.APP.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Article_Free
+    public partial class Free_Article
     {
         public int Id { get; set; }
-        public string Article_Content { get; set; }
-        public Nullable<int> Article_ImgId { get; set; }
-        public Nullable<int> Article_ProvinceId { get; set; }
+        public string Decreption { get; set; }
+        public string Title { get; set; }
+        public Nullable<int> ImageId { get; set; }
+        public Nullable<int> ProvinceId { get; set; }
+        public Nullable<int> CustommerId { get; set; }
         public Nullable<double> Price { get; set; }
-        public Nullable<int> Phone { get; set; }
-        public Nullable<System.DateTime> Created_Date { get; set; }
-        public string Status { get; set; }
-        public Nullable<int> ArticleId { get; set; }
+        public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> Free_Article_Id { get; set; }
+        public string Status { get; set; }
     }
 }

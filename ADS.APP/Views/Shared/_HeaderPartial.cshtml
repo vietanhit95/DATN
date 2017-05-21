@@ -1,13 +1,25 @@
-﻿
-@{
+﻿@{
     Layout = null;
+    ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
+    if (Session["Login"] != null)
+    {
+        cus = (ADS.APP.Models.Custommer)Session["Login"];
+    }
 }
 <div class="container">
     <div class="logo">
         <a href="/"><span>RaoVat</span>Online</a>
     </div>
     <div class="header-right">
+        @if (cus != null)
+        {
+        <a class="account" href="/User/Profilee">@cus.FullName</a>
+        }
+        else if (cus == null)
+        {
         <a class="account" href="/User/Login">Tài khoản của bạn</a>
+        }
+
         <!-- Large modal -->
         <div class="selectregion">
             <button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
@@ -406,7 +418,7 @@
                 </div>
             </div>
             <script>
-				$('#myModal').modal('');
+                $('#myModal').modal('');
             </script>
         </div>
     </div>
