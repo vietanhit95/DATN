@@ -18,5 +18,6 @@ namespace ADS.APP.Models
         public Nullable<int> CardId { get; set; }
         public string Type { get; set; }
         public Nullable<double> Price { get; set; }
+        public Nullable<int> CustommerId { get; set; }
     }
 }

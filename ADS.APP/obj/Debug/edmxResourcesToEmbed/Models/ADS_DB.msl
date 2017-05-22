@@ -23,6 +23,7 @@
     <EntitySetMapping Name="Cards">
       <EntityTypeMapping TypeName="ADS_DBModel.Card">
         <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="CardId" ColumnName="CardId" />
           <ScalarProperty Name="Type" ColumnName="Type" />

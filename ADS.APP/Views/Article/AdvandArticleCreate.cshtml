@@ -1,0 +1,92 @@
+﻿
+@model  ADS.APP.Models.ArticleViewModel
+@{
+    ViewBag.Title = "AdvandArticleCreate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
+    if (Session["Login"] != "")
+    {
+        cus = (ADS.APP.Models.Custommer)Session["Login"];
+    }
+}
+}
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="submit-ad main-grid-border">
+    <div class="container">
+        <h2 class="head">Đăng bài</h2>
+
+        <div class="post-ad-form">
+            @using (Html.BeginForm("AdvandArticleCreateAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+                <label>Danh mục <span>*</span></label>
+                @Html.DropDownListFor(n => n.AdvandeArticle.Article_CategoryId, (IEnumerable<SelectListItem>)ViewBag.lstDop, new { @class = "", @id = "select" })
+                <div class="clearfix"></div>
+                <label>Tiêu đề <span>*</span></label>
+                @Html.TextBoxFor(n => n.AdvandeArticle.Article_Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng" })
+                @Html.ValidationMessageFor(n => n.AdvandeArticle.Article_Title)
+                <div class="clearfix"></div>
+                <label>Nội dung <span>*</span></label>
+                @Html.TextAreaFor(n => n.AdvandeArticle.Article_Content, new { @class = "mess", @placeholder = "Mô tả về sản phẩm bạn đăng" })
+                @Html.ValidationMessageFor(n => n.AdvandeArticle.Article_Content)
+                <div class="clearfix"></div>
+                <label>Giá mua/bán <span>*</span></label>
+                @Html.TextBoxFor(n => n.AdvandeArticle.Article_Price, new { @class = "mess col-md-4", @placeholder = "Giá mong muốn của bạn" })
+                <div class="clearfix"></div>
+                <div class="upload-ad-photos">
+                    <label>Hình ảnh :</label>
+                    <div class="photos-upload-view">
+                        <input type="hidden" id="MAX_FILE_SIZE" name="MAX_FILE_SIZE" value="300000" />
+                        <div>
+                            <input type="file" id="fileselect" name="fileselect" multiple="multiple" />
+                        </div>
+                        <div id="messages">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <script src="~/Content/js/filedrag.js"></script>
+                </div>
+                <div class="clearfix"></div>
+
+                <label>Thẻ nạp</label>
+                    <div class="col-md-4">
+                        <select style="width:150px;margin-left:-14px" name="TypeCard">
+                            <option value="">Loại thẻ</option>
+                            <option value="1">Viettel</option>
+                            <option value="2">Vina Phone</option>
+                            <option value="3">Mobi Phone</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <select style="width:150px;margin-left:-14px" name="CardPrice">
+                            <option value="">Mệnh giá</option>
+                            <option value="1">20.000đ</option>
+                            <option value="2">50.000đ</option>
+                            <option value="3">100.000đ</option>
+                            <option value="4">200.000đ</option>
+                            <option value="5">Mệnh giá lớn hơn liên hệ quản trị</option>
+                        </select>
+                    </div>
+
+                    <div class="personal-details">
+                        <label>Họ tên <span>*</span></label>
+                        <input type="text" name="fullname" value="@cus.FullName" class="name" required=""/>
+                        <div class="clearfix"></div>
+                        <label>Số điện thoại <span>*</span></label>
+                        <input type="text" name="phone" value="@cus.PhoneNumber" class="phone" required="" />
+                        <div class="clearfix"></div>
+                        <label>Địa chỉ Email<span>*</span></label>
+                        <input type="text" name="addressemail" value="@cus.Email" class="email" required="" />
+                        <div class="clearfix"></div>
+                        <input type="submit" value="Đăng tin">
+                        <div class="clearfix"></div>
+                    </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+

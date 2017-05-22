@@ -2,7 +2,7 @@
 @{
     Layout = null;
     ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
-    if (Session["Login"] != null)
+    if (Session["Login"] != "")
     {
         cus = (ADS.APP.Models.Custommer)Session["Login"];
     }
@@ -136,10 +136,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="sub_home">
                                 <div class="sub_home_left">
-                                    <p>Quay về <a href="/Page/Home">Trang chủ</a></p>
+                                    <input type="submit" value="Đăng xuất">
                                 </div>
                                 <div class="sub_home_right">
-                                    <input type="submit" value="Đăng xuất">
+                                    <p>Quay về <a href="/Page/Home">Trang chủ</a></p>
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>

@@ -14,13 +14,10 @@
             {
                 @Html.ValidationSummary(true)
                 <label>Danh mục <span>*</span></label>
-                <select name="select">
-                    <option>Danh mục đăng bài</option>
-                    <option>Xe máy</option>
-                </select>
+                @Html.DropDownListFor(n => n.Article.CategoryId,(IEnumerable<SelectListItem>)ViewBag.lstDop, new { @class = "", @id = "select" })
                 <div class="clearfix"></div>
                 <label>Tiêu đề <span>*</span></label>
-                @Html.TextBoxFor(n => n.Article.Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng"})
+                @Html.TextBoxFor(n => n.Article.Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng" })
                 @Html.ValidationMessageFor(n => n.Article.Title)
                 <div class="clearfix"></div>
                 <label>Nội dung <span>*</span></label>
@@ -53,8 +50,9 @@
                     @Html.TextBoxFor(n => n.Cus.Email, new { @class = "email" })
                     @Html.ValidationMessageFor(n => n.Cus.Email)
                     <div class="clearfix"></div>
-                    <p class="post-terms">Đồng ý ấn nút <strong>Đăng bài</strong> thì bạn sẽ phải chấp nhận <a href="terms.html" target="_blank">Điều Khoản Sử Dụng </a> và <a href="privacy.html" target="_blank">Chính Sách Bảo Mật của Chúng Tôi</a></p>
-                    <input type="submit" value="Đăng Bài">
+                    <p class="post-terms">Hoặc nếu bạn muốn vị trí bài viết của bạn luôn ở khoảng trên cùng thì bạn có thể thực hiện <a href="/Article/AdvandArticleCreate">Đăng bài tin phí </a></p>
+                    <div class="clearfix"></div>
+                    <input type="submit" value="Đăng tin">
                     <div class="clearfix"></div>
                 </div>
             }

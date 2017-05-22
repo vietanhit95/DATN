@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
     ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
-    if (Session["Login"] != null)
+    if (Session["Login"] != "")
     {
         cus = (ADS.APP.Models.Custommer)Session["Login"];
     }
@@ -13,11 +13,11 @@
     <div class="header-right">
         @if (cus != null)
         {
-        <a class="account" href="/User/Profilee">@cus.FullName</a>
+            <a class="account" href="/User/Profilee">@cus.FullName</a>
         }
-        else if (cus == null)
+        else
         {
-        <a class="account" href="/User/Login">Tài khoản của bạn</a>
+            <a class="account" href="/User/Login">Tài khoản của bạn</a>
         }
 
         <!-- Large modal -->

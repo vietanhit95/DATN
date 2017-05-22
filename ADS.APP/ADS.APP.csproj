@@ -5657,6 +5657,8 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\User\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -5668,9 +5670,11 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustommerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -5715,6 +5719,7 @@
     <Compile Include="Models\Image.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ListArticle.cs" />
     <Compile Include="Models\Province.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
@@ -6110,6 +6115,7 @@
     <Content Include="Views\Article\Detail.cshtml" />
     <Content Include="Views\Article\PageSuccess.cshtml" />
     <Content Include="Views\User\Profilee.cshtml" />
+    <Content Include="Views\Article\AdvandArticleCreate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6123,6 +6129,7 @@
     <Folder Include="Areas\Admin\assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Content\uploads\" />
+    <Folder Include="Image\Admin\" />
     <Folder Include="Image\User\" />
   </ItemGroup>
   <ItemGroup>

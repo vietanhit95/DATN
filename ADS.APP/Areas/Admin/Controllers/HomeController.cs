@@ -11,7 +11,14 @@ namespace ADS.APP.Areas.Admin.Controllers
         // GET: Admin/Home
         public ActionResult DashBoard()
         {
-            return View();
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "User", new { Areas = "Admin" });
+            }
+            else
+            {
+                return View();
+            }
         }
     }
 }

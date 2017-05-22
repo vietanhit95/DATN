@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ADS.APP.Models;
+using System.Web.Security;
 
 namespace ADS.APP.Controllers
 {
@@ -16,17 +17,15 @@ namespace ADS.APP.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult Login(FormCollection form)
+        public ActionResult Login(Custommer Cus)
         {
-            string user = form["username"].ToString();
-            string pass = form["pass"].ToString();
-            var cus = db.Custommers.SingleOrDefault(n => n.UserName == user);
+            var cus = db.Custommers.SingleOrDefault(n => n.UserName == Cus.UserName);
             if (cus != null)
             {
-                if (cus.PassWord == pass)
+                if (cus.PassWord == Cus.PassWord)
                 {
                     Session["Login"] = cus;
-                    return View("Home","Page");
+                    return RedirectToAction("Home", "Page");
                 }
             }
             return View();
@@ -58,13 +57,17 @@ namespace ADS.APP.Controllers
         }
         public ActionResult Profilee()
         {
+
             return View();
         }
+
         [HttpPost]
         public ActionResult Logout()
         {
+            FormsAuthentication.SignOut();
             Session["Login"] = null;
             return RedirectToAction("Home", "Page");
+
         }
 
     }

@@ -31,6 +31,7 @@
           <Property Name="CardId" Type="int" />
           <Property Name="Type" Type="nvarchar" MaxLength="50" />
           <Property Name="Price" Type="float" />
+          <Property Name="CustommerId" Type="int" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -163,6 +164,7 @@
           <Property Name="CardId" Type="Int32" />
           <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Double" />
+          <Property Name="CustommerId" Type="Int32" />
         </EntityType>
         <EntityType Name="Category">
           <Key>
@@ -293,6 +295,7 @@
           <EntitySetMapping Name="Cards">
             <EntityTypeMapping TypeName="ADS_DBModel.Card">
               <MappingFragment StoreEntitySet="Card">
+                <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CardId" ColumnName="CardId" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

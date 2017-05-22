@@ -94,13 +94,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {
                             <div class="log-input">
                                 <div class="log-input">
-                                    <input type="text" class="user" name="username" value="Địa chỉ Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Địa chỉ Email';}" />
+                                    @Html.TextBoxFor(n => n.UserName, new { @class = "user", @placeholder = "Địa chỉ Email" })
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
                             <div class="log-input">
                                 <div class="log-input">
-                                    <input type="password" class="lock" name="pass" value="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'PassWord:';}" />
+                                    @Html.TextBoxFor(n => n.PassWord, new { @class = "lock", @placeholder = "Mật khẩu", @type = "password" })
                                 </div>
                                 <div class="clearfix"> </div>
                             </div>
