@@ -12,7 +12,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <span>Bài đăng đang chờ duyệt</span>
+            <span>Bài đăng đã duyệt</span>
         </li>
     </ul>
 </div>
@@ -113,15 +113,14 @@
                                                 </td>
 
                                             }
-                                            @if (@item.Status == "W")
+                                            @if (@item.Status == "Y")
                                             {
-                                                <td class="text-center"><label class="label label-warning">Chờ duyệt</label></td>
+                                                <td class="text-center"><label class="label label-warning">Đã duyệt</label></td>
                                             }
 
                                             <td class="text-center">Ghi chú</td>
                                             <td>
-                                                <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="Admin.DeleteArticleWaiting(@item.Id)" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
-                                                <a href="javascript:void(0)" onclick="Admin.ConfirmArticle(@item.Id)" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Duyệt</a>
+                                                <a href="javascript:void(0)" onclick="Admin.DeleteArticleSuccess(@item.Id)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
                                             </td>
                                         </tr>
                                     }

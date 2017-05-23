@@ -9,6 +9,10 @@ namespace ADS.APP.Models
     {
         public List<Free_Article> lstFree { get; set; }
         public List<Image> lstImage { get; set; }
+        public ListArticle()
+        {
+
+        }
 
     }
 }

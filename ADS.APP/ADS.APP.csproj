@@ -5641,6 +5641,7 @@
       <DependentUpon>ADS_DB.edmx</DependentUpon>
       <LastGenOutput>ADS_DB.cs</LastGenOutput>
     </Content>
+    <Content Include="Scripts\ADS\Admin.js" />
     <Content Include="Scripts\ADS\Common.js" />
     <Content Include="Scripts\ADS\Custommer.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -5659,6 +5660,8 @@
     <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
     <Content Include="Areas\Admin\Views\User\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\SuccessArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\Article\ArticleSave.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
