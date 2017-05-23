@@ -30,15 +30,6 @@
                 <div class="table-toolbar">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="btn-group">
-                                @*<button id="sample_editable_1_new" class="btn sbold green">
-                                        thêm mới
-                                        <i class="fa fa-plus"></i>
-                                    </button>*@
-                                <a class="btn sbold green" onclick="Category.ViewCreate()">
-                                    Thêm mới <i class="fa fa-plus"></i>
-                                </a>
-                            </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div id="sample_3_filter" class="dataTables_filter pull-right">
@@ -108,14 +99,14 @@
                                                     @for (int j = 0; j < Model.lstImage.Count; j++)
                                                     {
                                                         var img = Model.lstImage[j];
-                                                        <img src="~/Image/User/@img.Name" alt="Image" width="200px" height="80px" />
+                                                        <img src="~/Image/User/@img.Name" alt="Image" width="40px" height="60px" />
                                                     }
                                                 </td>
 
                                             }
-                                            @if (@item.Status == "Y")
+                                            @if (item.Status == "Y")
                                             {
-                                                <td class="text-center"><label class="label label-warning">Đã duyệt</label></td>
+                                                <td class="text-center"><label class="label label-primary"> Đã duyệt</label></td>
                                             }
 
                                             <td class="text-center">Ghi chú</td>

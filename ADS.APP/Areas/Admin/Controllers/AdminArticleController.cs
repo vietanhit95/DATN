@@ -7,7 +7,7 @@ using ADS.APP.Models;
 
 namespace ADS.APP.Areas.Admin.Controllers
 {
-    public class ArticleController : Controller
+    public class AdminArticleController : Controller
     {
         ADS_Entities db = new ADS_Entities();
         // GET: Admin/Article
@@ -15,7 +15,7 @@ namespace ADS.APP.Areas.Admin.Controllers
         {
             if (Session["AdminLogin"] == null)
             {
-                return RedirectToAction("Login", "User", new { Areas = "Admin" });
+                return RedirectToAction("Login", "AdminUser", new { Areas = "Admin" });
             }
             else
             {
@@ -39,7 +39,7 @@ namespace ADS.APP.Areas.Admin.Controllers
         {
             if (Session["AdminLogin"] == null)
             {
-                return RedirectToAction("Login", "User", new { Areas = "Admin" });
+                return RedirectToAction("Login", "AdminUser", new { Areas = "Admin" });
             }
             else
             {
@@ -62,7 +62,7 @@ namespace ADS.APP.Areas.Admin.Controllers
         {
             if (Session["AdminLogin"] == null)
             {
-                return RedirectToAction("Login", "User", new { Areas = "Admin" });
+                return RedirectToAction("Login", "AdminUser", new { Areas = "Admin" });
             }
             else
             {

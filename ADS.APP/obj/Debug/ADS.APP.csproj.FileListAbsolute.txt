@@ -46,4 +46,3 @@ D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.pdb
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.xml
-D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.csprojResolveAssemblyReference.cache

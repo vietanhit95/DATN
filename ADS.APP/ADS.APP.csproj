@@ -5658,10 +5658,11 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Category\Add.cshtml" />
-    <Content Include="Areas\Admin\Views\User\Login.cshtml" />
-    <Content Include="Areas\Admin\Views\Article\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Article\SuccessArticle.cshtml" />
-    <Content Include="Areas\Admin\Views\Article\ArticleSave.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminUser\Login.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminArticle\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminArticle\SuccessArticle.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminArticle\ArticleSave.cshtml" />
+    <Content Include="Areas\Admin\Views\Staff\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -5673,11 +5674,12 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\ArticleController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminArticleController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustommerController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminUserController.cs" />
+    <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\UserController.cs" />

@@ -13,8 +13,15 @@ namespace ADS.APP.Areas.Admin.Controllers
         // GET: Admin/Category
         public ActionResult Index()
         {
-            List<Category> lstCategory = db.Categories.ToList();
-            return View(lstCategory);
+            if (Session["AdminLogin"] == null)
+            {
+                return RedirectToAction("Login", "AdminUser", new { Areas = "Admin" });
+            }
+            else
+            {
+                List<Category> lstCategory = db.Categories.ToList();
+                return View(lstCategory);
+            }
         }
         public ActionResult Add()
         {

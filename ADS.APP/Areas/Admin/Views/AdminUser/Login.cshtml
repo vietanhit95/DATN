@@ -46,7 +46,7 @@
     <!-- BEGIN LOGIN -->
     <div class="content">
         <!-- BEGIN LOGIN FORM -->
-        @using (Html.BeginForm("Login", "User", FormMethod.Post))
+        @using (Html.BeginForm("Login", "AdminUser", FormMethod.Post))
         {
             <h3 class="form-title" style="margin-left:78px">ĐĂNG NHẬP</h3>
             <div class="alert alert-danger display-hide">
@@ -110,7 +110,7 @@
         <!-- BEGIN FORGOT PASSWORD FORM -->
         <!-- END FORGOT PASSWORD FORM -->
         <!-- BEGIN REGISTRATION FORM -->
-        @using (Html.BeginForm("SingUp", "User", FormMethod.Post, new { @class = "register-form" }))
+        @using (Html.BeginForm("SingUp", "AdminUser", FormMethod.Post, new { @class = "register-form" }))
         {
             <h3 style="margin-left:78px">Đăng ký</h3>
             <p> Thông tin cá nhân: </p>

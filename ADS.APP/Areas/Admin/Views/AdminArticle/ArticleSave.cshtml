@@ -12,7 +12,7 @@
             <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <span>Bài đăng đang chờ duyệt</span>
+            <span>Bài đăng đã duyệt</span>
         </li>
     </ul>
 </div>
@@ -23,7 +23,7 @@
             <div class="portlet-title">
                 <div class="caption font-dark">
                     <i class="icon-settings font-dark"></i>
-                    <span class="caption-subject bold uppercase"> Danh sách bài đăng đang chờ</span>
+                    <span class="caption-subject bold uppercase"> Danh sách bài đăng bị gỡ bỏ</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -108,20 +108,21 @@
                                                     @for (int j = 0; j < Model.lstImage.Count; j++)
                                                     {
                                                         var img = Model.lstImage[j];
-                                                        <img src="~/Image/User/@img.Name" alt="Image" width="200px" height="80px" />
+                                                        <img src="~/Image/User/@img.Name" alt="Image" width="40px" height="60px" />
                                                     }
                                                 </td>
 
                                             }
-                                            @if (@item.Status == "W")
+                                            @if (@item.Status == "N")
                                             {
-                                                <td class="text-center"><label class="label label-warning">Chờ duyệt</label></td>
+                                                <td class="text-center"><label class="label label-warning">Lưu trữ</label></td>
                                             }
 
                                             <td class="text-center">Ghi chú</td>
                                             <td>
-                                                <a href="javascript:void(0)" class="btn btn-danger btn-xs" onclick="Admin.DeleteArticleWaiting(@item.Id)" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
-                                                <a href="javascript:void(0)" onclick="Admin.ConfirmArticle(@item.Id)" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Duyệt</a>
+                                                <a href="javascript:void(0)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a>
+                                                <a href="javascript:void(0)" onclick="Admin.RestoreArticle(@item.Id)" class="btn btn-success btn-xs" title="Khôi phục"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Khôi phục</a>
+
                                             </td>
                                         </tr>
                                     }

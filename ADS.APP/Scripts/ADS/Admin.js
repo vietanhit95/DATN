@@ -4,7 +4,7 @@
             id: Id
         };
 
-        var url = "Admin/Article/ConfirmArticle";
+        var url = "Admin/AdminArticle/ConfirmArticle";
 
         common.CallXhttp(url, typeAjax.Post, dataTypeAjax.Html, dataRequest, true, true, function (data) {
             if (data == null) {
@@ -12,7 +12,7 @@
             }
             else {
                 table_ds.innerHtml = '';
-                $("#table_ds").load("/Admin/Article/Index #table1");
+                $("#table_ds").load("/Admin/AdminArticle/Index #table1");
             }
         });
     },
@@ -21,7 +21,7 @@
             id: Id
         };
 
-        var url = "Admin/Article/DeleteArticle";
+        var url = "Admin/AdminArticle/DeleteArticle";
 
         common.CallXhttp(url, typeAjax.Post, dataTypeAjax.Html, dataRequest, true, true, function (data) {
             if (data == null) {
@@ -29,7 +29,7 @@
             }
             else {
                 table_ds.innerHtml = '';
-                $("#table_ds").load("/Admin/Article/SuccessArticle #table1");
+                $("#table_ds").load("/Admin/AdminArticle/SuccessArticle #table1");
             }
         });
     },
@@ -38,7 +38,7 @@
             id: Id
         };
 
-        var url = "Admin/Article/DeleteArticle";
+        var url = "Admin/AdminArticle/DeleteArticle";
 
         common.CallXhttp(url, typeAjax.Post, dataTypeAjax.Html, dataRequest, true, true, function (data) {
             if (data == null) {
@@ -46,7 +46,7 @@
             }
             else {
                 table_ds.innerHtml = '';
-                $("#table_ds").load("/Admin/Article/Index #table1");
+                $("#table_ds").load("/Admin/AdminArticle/Index #table1");
             }
         });
     },
@@ -56,7 +56,7 @@
             id: Id
         };
 
-        var url = "Admin/Article/RestoreArticle";
+        var url = "Admin/AdminArticle/RestoreArticle";
 
         common.CallXhttp(url, typeAjax.Post, dataTypeAjax.Html, dataRequest, true, true, function (data) {
             if (data == null) {
@@ -64,7 +64,7 @@
             }
             else {
                 table_ds.innerHtml = '';
-                $("#table_ds").load("/Admin/Article/ArticleSave #table1");
+                $("#table_ds").load("/Admin/AdminArticle/ArticleSave #table1");
             }
         });
     }

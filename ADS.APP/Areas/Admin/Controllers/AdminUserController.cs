@@ -7,7 +7,7 @@ using ADS.APP.Models;
 
 namespace ADS.APP.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class AdminUserController : Controller
     {
         ADS_Entities db = new ADS_Entities();
         // GET: Admin/User

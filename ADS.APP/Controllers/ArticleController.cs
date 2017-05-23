@@ -189,8 +189,6 @@ namespace ADS.APP.Controllers
                 return View();
             }
 
-
-
             return RedirectToAction("PageSuccess", "Article");
         }
         public ActionResult ListProduct()
