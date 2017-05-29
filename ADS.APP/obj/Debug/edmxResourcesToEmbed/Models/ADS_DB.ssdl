@@ -11,12 +11,15 @@
     <Property Name="Article_ProvinceID" Type="int" />
     <Property Name="Article_Type" Type="int" />
     <Property Name="Article_Price" Type="float" />
-    <Property Name="Artilce_UserPhone" Type="int" />
+    <Property Name="Phone" Type="int" />
     <Property Name="Created_Date" Type="date" />
     <Property Name="Status" Type="nvarchar" MaxLength="1" />
     <Property Name="Article_CategoryId" Type="int" />
     <Property Name="ArticleId" Type="int" />
     <Property Name="CardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Email" Type="nvarchar" MaxLength="200" />
+    <Property Name="CommentId" Type="int" />
   </EntityType>
   <EntityType Name="Card">
     <Key>
@@ -38,6 +41,13 @@
     <Property Name="CategoryId" Type="int" />
     <Property Name="ArticleId" Type="int" />
   </EntityType>
+  <EntityType Name="CommentArticle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Decreption" Type="nvarchar" MaxLength="1500" />
+  </EntityType>
   <EntityType Name="Custommer">
     <Key>
       <PropertyRef Name="Id" />
@@ -58,25 +68,11 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
-    <Property Name="DistrictId" Type="int" />
-  </EntityType>
-  <EntityType Name="Free_Article">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Decreption" Type="nvarchar" MaxLength="1000" />
-    <Property Name="Title" Type="nvarchar" MaxLength="500" />
-    <Property Name="ImageId" Type="int" />
+    <Property Name="Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Location" Type="nvarchar" MaxLength="100" />
     <Property Name="ProvinceId" Type="int" />
-    <Property Name="CustommerId" Type="int" />
-    <Property Name="Price" Type="float" />
-    <Property Name="CreateDate" Type="date" />
-    <Property Name="CategoryId" Type="int" />
-    <Property Name="Free_Article_Id" Type="int" />
-    <Property Name="Status" Type="nvarchar" MaxLength="1" />
   </EntityType>
   <EntityType Name="Image">
     <Key>
@@ -90,8 +86,9 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="nvarchar" MaxLength="200" />
+    <Property Name="Parent_Id" Type="int" />
     <Property Name="DistrictId" Type="int" />
   </EntityType>
   <EntityType Name="Staff">
@@ -121,9 +118,9 @@
     <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CommentArticle" EntityType="Self.CommentArticle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Custommer" EntityType="Self.Custommer" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Free_Article" EntityType="Self.Free_Article" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />

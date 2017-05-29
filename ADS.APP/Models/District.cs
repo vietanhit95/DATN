@@ -16,6 +16,8 @@ namespace ADS.APP.Models
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public Nullable<int> DistrictId { get; set; }
+        public string Type { get; set; }
+        public string Location { get; set; }
+        public Nullable<int> ProvinceId { get; set; }
     }
 }

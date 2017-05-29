@@ -8,7 +8,6 @@ namespace ADS.APP.Models
     public class ArticleViewModel
     {
         public Custommer Cus { get; set; }
-        public Free_Article Article { get; set; }
         public Category Cate { get; set; }
         public Card Card { get; set; }
         public Article AdvandeArticle { get; set; }

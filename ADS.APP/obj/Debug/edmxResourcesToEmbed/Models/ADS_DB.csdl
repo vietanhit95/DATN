@@ -11,12 +11,15 @@
     <Property Name="Article_ProvinceID" Type="Int32" />
     <Property Name="Article_Type" Type="Int32" />
     <Property Name="Article_Price" Type="Double" />
-    <Property Name="Artilce_UserPhone" Type="Int32" />
     <Property Name="Created_Date" Type="DateTime" Precision="0" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Name="Article_CategoryId" Type="Int32" />
     <Property Name="ArticleId" Type="Int32" />
     <Property Name="CardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Phone" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CommentId" Type="Int32" />
   </EntityType>
   <EntityType Name="Card">
     <Key>
@@ -60,7 +63,9 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ProvinceId" Type="Int32" />
   </EntityType>
   <EntityType Name="Image">
     <Key>
@@ -77,6 +82,7 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="DistrictId" Type="Int32" />
+    <Property Name="Parent_Id" Type="Int32" />
   </EntityType>
   <EntityType Name="Staff">
     <Key>
@@ -111,22 +117,13 @@
     <EntitySet Name="Provinces" EntityType="Self.Province" />
     <EntitySet Name="Staffs" EntityType="Self.Staff" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="Free_Article" EntityType="ADS_DBModel.Free_Article" />
+    <EntitySet Name="CommentArticles" EntityType="ADS_DBModel.CommentArticle" />
   </EntityContainer>
-  <EntityType Name="Free_Article">
+  <EntityType Name="CommentArticle">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Decreption" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="ImageId" Type="Int32" />
-    <Property Name="ProvinceId" Type="Int32" />
-    <Property Name="CustommerId" Type="Int32" />
-    <Property Name="Price" Type="Double" />
-    <Property Name="CreateDate" Type="DateTime" Precision="0" />
-    <Property Name="CategoryId" Type="Int32" />
-    <Property Name="Free_Article_Id" Type="Int32" />
-    <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Decreption" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

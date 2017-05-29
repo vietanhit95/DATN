@@ -16,12 +16,15 @@
           <Property Name="Article_ProvinceID" Type="int" />
           <Property Name="Article_Type" Type="int" />
           <Property Name="Article_Price" Type="float" />
-          <Property Name="Artilce_UserPhone" Type="int" />
+          <Property Name="Phone" Type="int" />
           <Property Name="Created_Date" Type="date" />
           <Property Name="Status" Type="nvarchar" MaxLength="1" />
           <Property Name="Article_CategoryId" Type="int" />
           <Property Name="ArticleId" Type="int" />
           <Property Name="CardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" />
+          <Property Name="CommentId" Type="int" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -43,6 +46,13 @@
           <Property Name="CategoryId" Type="int" />
           <Property Name="ArticleId" Type="int" />
         </EntityType>
+        <EntityType Name="CommentArticle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Decreption" Type="nvarchar" MaxLength="1500" />
+        </EntityType>
         <EntityType Name="Custommer">
           <Key>
             <PropertyRef Name="Id" />
@@ -63,25 +73,11 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
-          <Property Name="DistrictId" Type="int" />
-        </EntityType>
-        <EntityType Name="Free_Article">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Decreption" Type="nvarchar" MaxLength="1000" />
-          <Property Name="Title" Type="nvarchar" MaxLength="500" />
-          <Property Name="ImageId" Type="int" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" />
+          <Property Name="Location" Type="nvarchar" MaxLength="100" />
           <Property Name="ProvinceId" Type="int" />
-          <Property Name="CustommerId" Type="int" />
-          <Property Name="Price" Type="float" />
-          <Property Name="CreateDate" Type="date" />
-          <Property Name="CategoryId" Type="int" />
-          <Property Name="Free_Article_Id" Type="int" />
-          <Property Name="Status" Type="nvarchar" MaxLength="1" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -95,8 +91,9 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="nvarchar" MaxLength="200" />
+          <Property Name="Parent_Id" Type="int" />
           <Property Name="DistrictId" Type="int" />
         </EntityType>
         <EntityType Name="Staff">
@@ -126,9 +123,9 @@
           <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Card" EntityType="Self.Card" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CommentArticle" EntityType="Self.CommentArticle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Custommer" EntityType="Self.Custommer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Free_Article" EntityType="Self.Free_Article" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Staff" EntityType="Self.Staff" Schema="dbo" store:Type="Tables" />
@@ -149,12 +146,15 @@
           <Property Name="Article_ProvinceID" Type="Int32" />
           <Property Name="Article_Type" Type="Int32" />
           <Property Name="Article_Price" Type="Double" />
-          <Property Name="Artilce_UserPhone" Type="Int32" />
           <Property Name="Created_Date" Type="DateTime" Precision="0" />
           <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
           <Property Name="Article_CategoryId" Type="Int32" />
           <Property Name="ArticleId" Type="Int32" />
           <Property Name="CardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CommentId" Type="Int32" />
         </EntityType>
         <EntityType Name="Card">
           <Key>
@@ -198,7 +198,9 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ProvinceId" Type="Int32" />
         </EntityType>
         <EntityType Name="Image">
           <Key>
@@ -215,6 +217,7 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="DistrictId" Type="Int32" />
+          <Property Name="Parent_Id" Type="Int32" />
         </EntityType>
         <EntityType Name="Staff">
           <Key>
@@ -249,23 +252,14 @@
           <EntitySet Name="Provinces" EntityType="Self.Province" />
           <EntitySet Name="Staffs" EntityType="Self.Staff" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-          <EntitySet Name="Free_Article" EntityType="ADS_DBModel.Free_Article" />
+          <EntitySet Name="CommentArticles" EntityType="ADS_DBModel.CommentArticle" />
         </EntityContainer>
-        <EntityType Name="Free_Article">
+        <EntityType Name="CommentArticle">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Decreption" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ImageId" Type="Int32" />
-          <Property Name="ProvinceId" Type="Int32" />
-          <Property Name="CustommerId" Type="Int32" />
-          <Property Name="Price" Type="Double" />
-          <Property Name="CreateDate" Type="DateTime" Precision="0" />
-          <Property Name="CategoryId" Type="Int32" />
-          <Property Name="Free_Article_Id" Type="Int32" />
-          <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+          <Property Name="Decreption" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -276,6 +270,10 @@
           <EntitySetMapping Name="Articles">
             <EntityTypeMapping TypeName="ADS_DBModel.Article">
               <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
                 <ScalarProperty Name="Article_Title" ColumnName="Article_Title" />
@@ -283,7 +281,6 @@
                 <ScalarProperty Name="Article_ProvinceID" ColumnName="Article_ProvinceID" />
                 <ScalarProperty Name="Article_Type" ColumnName="Article_Type" />
                 <ScalarProperty Name="Article_Price" ColumnName="Article_Price" />
-                <ScalarProperty Name="Artilce_UserPhone" ColumnName="Artilce_UserPhone" />
                 <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Article_CategoryId" ColumnName="Article_CategoryId" />
@@ -334,9 +331,11 @@
           <EntitySetMapping Name="Districts">
             <EntityTypeMapping TypeName="ADS_DBModel.District">
               <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -352,6 +351,7 @@
           <EntitySetMapping Name="Provinces">
             <EntityTypeMapping TypeName="ADS_DBModel.Province">
               <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
@@ -383,18 +383,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Free_Article">
-            <EntityTypeMapping TypeName="ADS_DBModel.Free_Article">
-              <MappingFragment StoreEntitySet="Free_Article">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
-                <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
+          <EntitySetMapping Name="CommentArticles">
+            <EntityTypeMapping TypeName="ADS_DBModel.CommentArticle">
+              <MappingFragment StoreEntitySet="CommentArticle">
                 <ScalarProperty Name="Decreption" ColumnName="Decreption" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

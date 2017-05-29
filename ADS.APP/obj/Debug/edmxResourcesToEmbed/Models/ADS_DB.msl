@@ -4,6 +4,10 @@
     <EntitySetMapping Name="Articles">
       <EntityTypeMapping TypeName="ADS_DBModel.Article">
         <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Article_Content" ColumnName="Article_Content" />
           <ScalarProperty Name="Article_Title" ColumnName="Article_Title" />
@@ -11,7 +15,6 @@
           <ScalarProperty Name="Article_ProvinceID" ColumnName="Article_ProvinceID" />
           <ScalarProperty Name="Article_Type" ColumnName="Article_Type" />
           <ScalarProperty Name="Article_Price" ColumnName="Article_Price" />
-          <ScalarProperty Name="Artilce_UserPhone" ColumnName="Artilce_UserPhone" />
           <ScalarProperty Name="Created_Date" ColumnName="Created_Date" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="Article_CategoryId" ColumnName="Article_CategoryId" />
@@ -62,9 +65,11 @@
     <EntitySetMapping Name="Districts">
       <EntityTypeMapping TypeName="ADS_DBModel.District">
         <MappingFragment StoreEntitySet="District">
+          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
+          <ScalarProperty Name="Location" ColumnName="Location" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -80,6 +85,7 @@
     <EntitySetMapping Name="Provinces">
       <EntityTypeMapping TypeName="ADS_DBModel.Province">
         <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
@@ -111,18 +117,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Free_Article">
-      <EntityTypeMapping TypeName="ADS_DBModel.Free_Article">
-        <MappingFragment StoreEntitySet="Free_Article">
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Free_Article_Id" ColumnName="Free_Article_Id" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="CustommerId" ColumnName="CustommerId" />
-          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
-          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
+    <EntitySetMapping Name="CommentArticles">
+      <EntityTypeMapping TypeName="ADS_DBModel.CommentArticle">
+        <MappingFragment StoreEntitySet="CommentArticle">
           <ScalarProperty Name="Decreption" ColumnName="Decreption" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

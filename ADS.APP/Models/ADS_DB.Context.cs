@@ -34,6 +34,6 @@ namespace ADS.APP.Models
         public DbSet<Province> Provinces { get; set; }
         public DbSet<Staff> Staffs { get; set; }
         public DbSet<sysdiagram> sysdiagrams { get; set; }
-        public DbSet<Free_Article> Free_Article { get; set; }
+        public DbSet<CommentArticle> CommentArticles { get; set; }
     }
 }

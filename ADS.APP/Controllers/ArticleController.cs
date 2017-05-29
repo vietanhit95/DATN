@@ -37,20 +37,21 @@ namespace ADS.APP.Controllers
         {
             Category cate = new Category();
             string path = "";
-            Free_Article free = new Models.Free_Article();
+            Article free = new Models.Article();
             Custommer Cus = new Custommer();
             Image img = new Image();
             try
             {
-                if (Free_Article.Article != null)
+                if (Free_Article.AdvandeArticle != null)
                 {
-                    free.Decreption = Free_Article.Article.Decreption;
-                    free.Title = Free_Article.Article.Title;
+                    free.Article_Content = Free_Article.AdvandeArticle.Article_Content;
+                    free.Article_Title = Free_Article.AdvandeArticle.Article_Title;
                     free.Status = "W";
-                    free.Price = Free_Article.Article.Price;
-                    free.CreateDate = DateTime.Now;
-                    free.CategoryId = Free_Article.Article.CategoryId;
-                    db.Free_Article.Add(free);
+                    free.Article_Price = Free_Article.AdvandeArticle.Article_Price;
+                    free.Article_Type = 0;
+                    free.Created_Date = DateTime.Now;
+                    free.Article_CategoryId = Free_Article.AdvandeArticle.Article_CategoryId;
+                    db.Articles.Add(free);
                     db.SaveChanges();
                     if (fileselect != null)
                     {

@@ -21,11 +21,14 @@ namespace ADS.APP.Models
         public Nullable<int> Article_ProvinceID { get; set; }
         public Nullable<int> Article_Type { get; set; }
         public Nullable<double> Article_Price { get; set; }
-        public Nullable<int> Artilce_UserPhone { get; set; }
         public Nullable<System.DateTime> Created_Date { get; set; }
         public string Status { get; set; }
         public Nullable<int> Article_CategoryId { get; set; }
         public Nullable<int> ArticleId { get; set; }
         public int CardId { get; set; }
+        public Nullable<int> Phone { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public Nullable<int> CommentId { get; set; }
     }
 }

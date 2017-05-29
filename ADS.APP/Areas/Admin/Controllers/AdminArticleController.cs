@@ -20,7 +20,7 @@ namespace ADS.APP.Areas.Admin.Controllers
             else
             {
                 ListArticle model = new ListArticle();
-                List<Free_Article> free = db.Free_Article.Where(n => n.Status == "W").ToList();
+                List<Article> free = db.Articles.Where(n => n.Status == "W").ToList();
                 if (free != null)
                 {
                     for (int i = 0; i < free.Count; i++)
@@ -44,7 +44,7 @@ namespace ADS.APP.Areas.Admin.Controllers
             else
             {
                 ListArticle model = new ListArticle();
-                List<Free_Article> free = db.Free_Article.Where(n => n.Status == "N").ToList();
+                List<Article> free = db.Articles.Where(n => n.Status == "N").ToList();
                 if (free != null)
                 {
                     for (int i = 0; i < free.Count; i++)
@@ -67,7 +67,7 @@ namespace ADS.APP.Areas.Admin.Controllers
             else
             {
                 ListArticle model = new ListArticle();
-                List<Free_Article> free = db.Free_Article.Where(n => n.Status == "Y").ToList();
+                List<Article> free = db.Articles.Where(n => n.Status == "Y").ToList();
                 if (free != null)
                 {
                     for (int i = 0; i < free.Count; i++)
@@ -84,41 +84,41 @@ namespace ADS.APP.Areas.Admin.Controllers
         [HttpPost]
         public JsonResult ConfirmArticle(int id)
         {
-            var free = db.Free_Article.ToList().Find(n => n.Id == id);
+            var free = db.Articles.ToList().Find(n => n.Id == id);
 
             if (free != null)
             {
                 free.Status = "Y";
                 db.SaveChanges();
             }
-            List<Free_Article> Fre = db.Free_Article.ToList();
+            List<Article> Fre = db.Articles.ToList();
             return Json(Fre, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
         public JsonResult DeleteArticle(int id)
         {
-            var free = db.Free_Article.ToList().Find(n => n.Id == id);
+            var free = db.Articles.ToList().Find(n => n.Id == id);
 
             if (free != null)
             {
                 free.Status = "N";
                 db.SaveChanges();
             }
-            List<Free_Article> Fre = db.Free_Article.ToList();
+            List<Article> Fre = db.Articles.ToList();
             return Json(Fre, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
         public JsonResult RestoreArticle(int id)
         {
-            var free = db.Free_Article.ToList().Find(n => n.Id == id);
+            var free = db.Articles.ToList().Find(n => n.Id == id);
 
             if (free != null)
             {
                 free.Status = "Y";
                 db.SaveChanges();
             }
-            List<Free_Article> Fre = db.Free_Article.ToList();
+            List<Article> Fre = db.Articles.ToList();
             return Json(Fre, JsonRequestBehavior.AllowGet);
         }
     }
