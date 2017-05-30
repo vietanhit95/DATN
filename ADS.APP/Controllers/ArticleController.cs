@@ -192,8 +192,10 @@ namespace ADS.APP.Controllers
 
             return RedirectToAction("PageSuccess", "Article");
         }
-        public ActionResult ListProduct()
+        public ActionResult Mobie()
         {
+            ListViewArticle model = new ListViewArticle();
+            model.lstArticle = db.Articles.Where(n=>n.Article_CategoryId == 1).ToList();
             return View();
         }
         public ActionResult Detail()
@@ -209,5 +211,6 @@ namespace ADS.APP.Controllers
         {
             return View();
         }
+
     }
 }

@@ -11,6 +11,7 @@ namespace ADS.APP.Models
         public Category Cate { get; set; }
         public Card Card { get; set; }
         public Article AdvandeArticle { get; set; }
+        
 
     }
 }

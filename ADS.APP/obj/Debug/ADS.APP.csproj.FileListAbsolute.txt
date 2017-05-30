@@ -70,3 +70,4 @@ D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Helpers.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Mvc.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.pdb
+D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.csprojResolveAssemblyReference.cache

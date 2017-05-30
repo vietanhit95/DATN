@@ -5630,9 +5630,14 @@
     <Content Include="Content\js\jquery.uls.languagefilter.js" />
     <Content Include="Content\js\jquery.uls.lcd.js" />
     <Content Include="Content\js\jquery.uls.regionfilter.js" />
+    <Content Include="Content\js\jqueryui.css" />
     <Content Include="Content\js\script.js" />
     <Content Include="Content\js\tabs.js" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\TokenInput\jquery.tokeninput.js" />
+    <Content Include="Content\TokenInput\jquery.tokeninput.min.js" />
+    <Content Include="Content\TokenInput\token-input-facebook.css" />
+    <Content Include="Content\TokenInput\token-input.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Models\ADS_DB.Context.tt">
@@ -5676,12 +5681,16 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\form-tokenfield\bootstrap-tokenfield.css" />
+    <Content Include="Scripts\form-tokenfield\bootstrap-tokenfield.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jqueryui-1.9.2.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -5739,6 +5748,7 @@
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ListArticle.cs" />
+    <Compile Include="Models\ListViewArticle.cs" />
     <Compile Include="Models\Province.cs">
       <DependentUpon>ADS_DB.tt</DependentUpon>
     </Compile>
@@ -6133,6 +6143,7 @@
     <Content Include="Views\Article\AdvandArticleCreate.cshtml" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Article\Mobie.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

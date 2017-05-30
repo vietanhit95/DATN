@@ -12,6 +12,7 @@
         <div class="post-ad-form">
             @using (Html.BeginForm("ArticleFreeAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
+               
                 @Html.ValidationSummary(true)
                 <label>Danh mục <span>*</span></label>
                 @Html.DropDownListFor(n => n.AdvandeArticle.Article_CategoryId,(IEnumerable<SelectListItem>)ViewBag.lstDop, new { @class = "", @id = "select" })
