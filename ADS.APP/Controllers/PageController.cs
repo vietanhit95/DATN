@@ -30,6 +30,7 @@ namespace ADS.APP.Controllers
             var CityName = db.Provinces.Select(a => new
             {
                 id = a.Id,
+                type = a.Type,
                 name = a.Name
             }).ToList();
 
@@ -41,6 +42,7 @@ namespace ADS.APP.Controllers
             var District = db.Districts.Where(x => x.ProvinceId == ProvinceId).Select(a => new
             {
                 id = a.Id,
+                type = a.Type,
                 name = a.Name
             }).ToList();
 
@@ -48,13 +50,13 @@ namespace ADS.APP.Controllers
         }
         public ActionResult Menu()
         {
-            var District = db.Categories.Select(a => new
+            var Category = db.Categories.Select(a => new
             {
                 id = a.Id,
                 name = a.Name
             }).ToList();
 
-            return Json(District, JsonRequestBehavior.AllowGet);
+            return Json(Category, JsonRequestBehavior.AllowGet);
         }
     }
 }

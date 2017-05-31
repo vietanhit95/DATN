@@ -40,38 +40,52 @@
                         </div>
                         <script>
                             $(document).ready(function () {
-                                //$.ajax({
-                                //    url: "/Page/SeachProvinceV1",
-                                //    type: "GET",
-                                //    dataType: "Json",
-                                //    data: { },
-                                //    success: function (data) {
-                                //        let html = ''
+                                $.ajax({
+                                    url: "/Page/SeachProvinceV1",
+                                    type: "GET",
+                                    dataType: "Json",
+                                    data: { },
+                                    success: function (data) {
+                                        let html = ''
 
-                                //        $.each(data, function (i, v) {
-                                //            html += '<option value="' + v.id + '">' + v.name + '</option>'
-                                //        });
-                                //        $('#Province').append(html);
-                                //    }
-                                //})
+                                        $.each(data, function (i, v) {
+                                            html += '<option value="' + v.id + '">' + v.type + ' ' + v.name + '</option>'
+                                        });
+                                        $('#Province').append(html);
+                                    }
+                                })
+                                $.ajax({
+                                    url: "/Page/Menu",
+                                    type: "GET",
+                                    dataType: "Json",
+                                    data: {},
+                                    success: function (data) {
+                                        let html = ''
 
-                                //$("#Province").change(function () {
-                                //    var Province = $(this).val();
-                                //    $.ajax({
-                                //        url: "/Page/SeachDistrict",
-                                //        type: "GET",
-                                //        dataType: "Json",
-                                //        data: { ProvinceId: Province },
-                                //        success: function (data) {
-                                //            let html = ''
+                                        $.each(data, function (i, v) {
+                                            html += '<option data-tokens="' + v.name + '">' + v.name + '</option>'
+                                        });
+                                        $('#Menu').append(html);
+                                    }
+                                })
 
-                                //            $.each(data, function (i, v) {
-                                //                html += '<option>' + v.name + '</option>'
-                                //            });
-                                //            $('#District').html(html);
-                                //        }
-                                //    })
-                                //});
+                                $("#Province").change(function () {
+                                    var Province = $(this).val();
+                                    $.ajax({
+                                        url: "/Page/SeachDistrict",
+                                        type: "GET",
+                                        dataType: "Json",
+                                        data: { ProvinceId: Province },
+                                        success: function (data) {
+                                            let html = ''
+
+                                            $.each(data, function (i, v) {
+                                                html += '<option value="' + v.id + '">' + v.type + ' ' + v.name + '</option>'
+                                            });
+                                            $('#District').html(html);
+                                        }
+                                    })
+                                });
 
                                 let url = "/Page/SeachProvince?q=";
                                 $("#ml").tokenInput(url, {

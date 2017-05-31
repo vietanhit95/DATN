@@ -4,21 +4,20 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" />
-    <Property Name="Article_Content" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-    <Property Name="Article_Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-    <Property Name="Article_ImgId" Type="Int32" />
-    <Property Name="Article_ProvinceID" Type="Int32" />
-    <Property Name="Article_Type" Type="Int32" />
-    <Property Name="Article_Price" Type="Double" />
-    <Property Name="Created_Date" Type="DateTime" Precision="0" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Decreption" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="Title" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ImageId" Type="Int32" />
+    <Property Name="ProvinceId" Type="Int32" />
+    <Property Name="Article_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="PhoneNumber" Type="Int32" />
+    <Property Name="Create_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-    <Property Name="Article_CategoryId" Type="Int32" />
-    <Property Name="ArticleId" Type="Int32" />
-    <Property Name="CardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Phone" Type="Int32" />
-    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CategoryId" Type="Int32" />
+    <Property Name="CardId" Type="Int32" />
+    <Property Name="UserNameFree" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="EmailFree" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="CommentId" Type="Int32" />
     <Property Name="CustommerId" Type="Int32" />
     <Property Name="DistrictId" Type="Int32" />
@@ -43,6 +42,13 @@
     <Property Name="CategoryId" Type="Int32" />
     <Property Name="ArticleId" Type="Int32" />
   </EntityType>
+  <EntityType Name="CommentArticle">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Decreption" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="Custommer">
     <Key>
       <PropertyRef Name="Id" />
@@ -63,7 +69,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -81,7 +87,7 @@
     <Key>
       <PropertyRef Name="Id" />
     </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id" Type="Int32" Nullable="false" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
@@ -112,19 +118,12 @@
     <EntitySet Name="Articles" EntityType="Self.Article" />
     <EntitySet Name="Cards" EntityType="Self.Card" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
+    <EntitySet Name="CommentArticles" EntityType="Self.CommentArticle" />
     <EntitySet Name="Custommers" EntityType="Self.Custommer" />
     <EntitySet Name="Districts" EntityType="Self.District" />
     <EntitySet Name="Images" EntityType="Self.Image" />
     <EntitySet Name="Provinces" EntityType="Self.Province" />
     <EntitySet Name="Staffs" EntityType="Self.Staff" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
-    <EntitySet Name="CommentArticles" EntityType="ADS_DBModel.CommentArticle" />
   </EntityContainer>
-  <EntityType Name="CommentArticle">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Decreption" Type="String" MaxLength="1500" FixedLength="false" Unicode="true" />
-  </EntityType>
 </Schema>
