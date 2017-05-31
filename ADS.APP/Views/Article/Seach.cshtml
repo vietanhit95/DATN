@@ -1,4 +1,5 @@
-﻿@model List<ADS.APP.Models.Article>
+﻿
+@model List<ADS.APP.Models.Article>
 @using ADS.APP.Models;
 @{
     Layout = null;
@@ -112,24 +113,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Mobiles -->
     <div class="total-ads main-grid-border">
         <div class="container">
-            @using (Html.BeginForm("Seach", "Article", FormMethod.Post))
-            {
-                <div class="select-box">
-
+            <div class="select-box">
+                @using (Html.BeginForm("Seach", "Article", FormMethod.Get))
+                {
                     <div class="select-city-for-local-ads ads-list">
                         <label>Tỉnh/Thành phố</label>
-                        <select id="Province" name="Province"></select>
+                        <select id="Province"></select>
                     </div>
                     <div class="browse-category ads-list">
                         <label>Danh mục</label>
-                        <select class="selectpicker show-tick" data-live-search="true" id="Menu" name="Menu"></select>
+                        <select class="selectpicker show-tick" data-live-search="true" id="Menu"></select>
                     </div>
                     <div class="search-product ads-list">
                         <label>Tên đồ muốn tìm </label>
                         <div class="search">
                             <div id="custom-search-input">
                                 <div class="input-group">
-                                    <input name="keyseach" type="text" class="form-control input-lg" placeholder="Tên đồ muốn tìm" />
+                                    <input type="text" class="form-control input-lg" placeholder="Tên đồ muốn tìm" />
                                     <span class="input-group-btn">
                                         <button class="btn btn-info btn-lg" type="submit">
                                             <i class="glyphicon glyphicon-search"></i>
@@ -139,10 +139,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                         </div>
                     </div>
-
-                    <div class="clearfix"></div>
-                </div>
-            }
+                }
+                <div class="clearfix"></div>
+            </div>
             <ol class="breadcrumb" style="margin-bottom: 5px;">
                 <li><a href="index.html">Trang chủ</a></li>
                 <li><a href="categories.html">Điện thoại</a></li>
@@ -855,3 +854,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!--footer section end-->
 </body>
 </html>
+

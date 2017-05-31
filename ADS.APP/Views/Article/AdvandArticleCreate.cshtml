@@ -21,19 +21,25 @@
             @using (Html.BeginForm("AdvandArticleCreateAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
                 @Html.ValidationSummary(true)
+                <label>Tỉnh/Thành phố</label>
+                <select id="Province" name="Province"></select>
+                <div class="clearfix"></div>
+                <label>Huyện trực thuộc</label>
+                <select id="District" name="District"></select>
+                <div class="clearfix"></div>
                 <label>Danh mục <span>*</span></label>
-                @Html.DropDownListFor(n => n.AdvandeArticle.Article_CategoryId, (IEnumerable<SelectListItem>)ViewBag.lstDop, new { @class = "", @id = "select" })
+                @Html.DropDownListFor(n => n.AdvandeArticle.CategoryId, (IEnumerable<SelectListItem>)ViewBag.lstDop, new { @class = "", @id = "select" })
                 <div class="clearfix"></div>
                 <label>Tiêu đề <span>*</span></label>
-                @Html.TextBoxFor(n => n.AdvandeArticle.Article_Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng" })
-                @Html.ValidationMessageFor(n => n.AdvandeArticle.Article_Title)
+                @Html.TextBoxFor(n => n.AdvandeArticle.Title, new { @class = "phone", @placeholder = "Tiêu đề bài đăng" })
+                @Html.ValidationMessageFor(n => n.AdvandeArticle.Title)
                 <div class="clearfix"></div>
                 <label>Nội dung <span>*</span></label>
-                @Html.TextAreaFor(n => n.AdvandeArticle.Article_Content, new { @class = "mess", @placeholder = "Mô tả về sản phẩm bạn đăng" })
-                @Html.ValidationMessageFor(n => n.AdvandeArticle.Article_Content)
+                @Html.TextAreaFor(n => n.AdvandeArticle.Decreption, new { @class = "mess", @placeholder = "Mô tả về sản phẩm bạn đăng" })
+                @Html.ValidationMessageFor(n => n.AdvandeArticle.Decreption)
                 <div class="clearfix"></div>
                 <label>Giá mua/bán <span>*</span></label>
-                @Html.TextBoxFor(n => n.AdvandeArticle.Article_Price, new { @class = "mess col-md-4", @placeholder = "Giá mong muốn của bạn" })
+                @Html.TextBoxFor(n => n.AdvandeArticle.Price, new { @class = "mess col-md-4", @placeholder = "Giá mong muốn của bạn" })
                 <div class="clearfix"></div>
                 <div class="upload-ad-photos">
                     <label>Hình ảnh :</label>

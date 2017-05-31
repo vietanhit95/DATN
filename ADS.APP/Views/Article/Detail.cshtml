@@ -3,8 +3,11 @@
 @{
     Layout = null;
     ADS_Entities db = new ADS_Entities();
-    var province = db.Provinces.ToList();
+    var province = db.Provinces.SingleOrDefault(n => n.Id == Model.ProvinceId);
     var category = db.Categories.ToList();
+    List<Image> Image = db.Images.Where(n => n.ImageId == Model.Id).ToList();
+    var district = db.Districts.SingleOrDefault(n => n.Id == Model.DistrictId);
+    List<Article> article = db.Articles.Where(n => n.CategoryId == 1).ToList();
 }
 
 <!DOCTYPE html>
@@ -47,6 +50,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 liveSearch: true,
                 maxOptions: 1
             });
+            $.ajax({
+                url: "/Page/Menu",
+                type: "GET",
+                dataType: "Json",
+                data: {},
+                success: function (data) {
+                    let html = ''
+
+                    $.each(data, function (i, v) {
+                        html += '<li><a href="">' + v.name + '</a></li>'
+                    });
+                    $('#ol').append(html);
+                }
+            })
         });
     </script>
     <script type="text/javascript" src="~/Content/js/jquery.leanModal.min.js"></script>
@@ -86,26 +103,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="single-page main-grid-border">
         <div class="container">
             <ol class="breadcrumb" style="margin-bottom: 5px;">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="all-classifieds.html">All Ads</a></li>
-                <li class="active"><a href="mobiles.html">Mobiles</a></li>
-                <li class="active">Mobile Phone</li>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="all-classifieds.html">Danh mục</a></li>
+                <li class="active"><a href="mobiles.html">Điện thoại</a></li>
+                <li class="active">Chi tiết</li>
             </ol>
             <div class="product-desc">
                 <div class="col-md-7 product-view">
                     <h2>@Model.Title</h2>
-                    <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">state</a>, <a href="#">@province.SingleOrDefault(n=>n.Id==Model.ProvinceId).Name</a>| @Model.Create_Date, Mã số: @("0101" + Model.Id.ToString("0"))</p>
+                    <p> <i class="glyphicon glyphicon-map-marker"></i><a href="#">@(district.Type + " " + district.Name)</a>, <a href="#">@(province.Type + " " + province.Name)</a>| @Model.Create_Date, Mã số: @("0101" + Model.Id.ToString("0"))</p>
                     <div class="flexslider">
                         <ul class="slides">
-                            <li data-thumb="/Content/images/ss1.jpg">
-                                <img src="/Content/images/ss1.jpg" />
-                            </li>
-                            <li data-thumb="/Content/images/ss2.jpg">
-                                <img src="/Content/images/ss2.jpg" />
-                            </li>
-                            <li data-thumb="/Content/images/ss3.jpg">
-                                <img src="/Content/images/ss3.jpg" />
-                            </li>
+                            @foreach (var Img in Image)
+                            {
+                                <li data-thumb="/Image/User/@Img.Name">
+                                    <img src="/Image/User/@Img.Name" />
+                                </li>
+                            }
+                            @*<li data-thumb="/Image/User/@Image.SingleOrDefault(n=>n.ImageId == Model.Id).Name">
+                                    <img src="" />
+                                </li>
+                                <li data-thumb="/Content/images/ss3.jpg">
+                                    <img src="/Content/images/ss3.jpg" />
+                                </li>*@
                         </ul>
                     </div>
                     <!-- FlexSlider -->
@@ -123,48 +143,96 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </script>
                     <!-- //FlexSlider -->
                     <div class="product-details">
-                        <h4>Danh mục : <a href="#">@category.SingleOrDefault(n=>n.Id== Model.CategoryId).Name</a></h4>
-                        <h4>Giá : <strong>@(Model.Price + "Vnđ")</strong></h4>
-                        <p><strong>Display </strong>: 1.5 inch HD LCD Touch Screen</p>
-                        <p><strong>Summary</strong> : It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+                        <h4>Danh mục : <a href="#">@category.SingleOrDefault(n => n.Id == Model.CategoryId).Name</a></h4>
+                        <h4>Giá : <strong>@(Model.Price.ToString() + "Vnđ")</strong></h4>
+                        <p><strong>Tiêu đề </strong>:@Model.Title</p>
+                        <p><strong>Nội dung</strong> : @Model.Decreption</p>
 
                     </div>
+
+                    <br />
+                    <!-- slider -->
+                    <div class="trend-ads" style="margin-top:50px;border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding: 20px 0;margin: 20px 0;">
+                        <h2 class="font-blue-soft">Bài đăng tương tự</h2>
+                        <ul id="flexiselDemo3">
+
+                            <li>
+                                @foreach (var arti in article)
+                                {
+                                    <div class="col-md-3 biseller-column">
+                                        <a href="single.html">
+                                            <img src="~/Content/images/p9.jpg" />
+                                            <span class="price">&#36; @arti.Price</span>
+                                        </a>
+                                        <div class="ad-info">
+                                            <h5>@arti.Title</h5>
+                                            <span>@(arti.Create_Date)</span>
+                                        </div>
+                                    </div>
+                                }
+                            </li>
+
+
+
+                        </ul>
+                        <script type="text/javascript">
+                            $(window).load(function () {
+                                $("#flexiselDemo3").flexisel({
+                                    visibleItems: 1,
+                                    animationSpeed: 1000,
+                                    autoPlay: true,
+                                    autoPlaySpeed: 5000,
+                                    pauseOnHover: true,
+                                    enableResponsiveBreakpoints: true,
+                                    responsiveBreakpoints: {
+                                        portrait: {
+                                            changePoint: 480,
+                                            visibleItems: 1
+                                        },
+                                        landscape: {
+                                            changePoint: 640,
+                                            visibleItems: 1
+                                        },
+                                        tablet: {
+                                            changePoint: 768,
+                                            visibleItems: 1
+                                        }
+                                    }
+                                });
+
+                            });
+                        </script>
+                        <script type="text/javascript" src="~/Content/js/jquery.flexisel.js"></script>
+                    </div>
+
+                    <!-- //slider -->
+
                 </div>
                 <div class="col-md-5 product-details-grid">
                     <div class="item-price">
                         <div class="product-price">
-                            <p class="p-price">Price</p>
-                            <h3 class="rate">$ 259</h3>
+                            <p class="p-price">Tên người bán:</p>
+                            <p style="float: right;margin-top: -21px;width: 50%;">@Model.UserNameFree</p>
                             <div class="clearfix"></div>
                         </div>
                         <div class="condition">
-                            <p class="p-price">Condition</p>
-                            <h4>Good</h4>
+                            <p class="p-price">Số điện thoại:</p>
+                            <p style="float: right;margin-top: -21px;width: 50%;">@("0" + Model.PhoneNumber.ToString())</p>
                             <div class="clearfix"></div>
                         </div>
                         <div class="itemtype">
-                            <p class="p-price">Item Type</p>
-                            <h4>Phones</h4>
+                            <p class="p-price">Email:</p>
+                            <p style="float: right;margin-top: -21px;width: 50%;">@Model.EmailFree</p>
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="interested text-center">
-                        <h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
-                        <a href="#" class="btn btn-success" style="padding: 10px;border-radius: 3px;margin-top: 17px;"><i class="glyphicon glyphicon-earphone"></i> 00-85-9875462655</a>
-                    </div>
+                    @*<div class="interested text-center">
+                            <h4>Interested in this Ad?<small> Contact the Seller!</small></h4>
+                            <a href="#" class="btn btn-success" style="padding: 10px;border-radius: 3px;margin-top: 17px;"><i class="glyphicon glyphicon-earphone"></i> 00-85-9875462655</a>
+                        </div>*@
                     <div class="tips">
-                        <h4>Safety Tips for Buyers</h4>
-                        <ol>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                            <li><a href="#">Contrary to popular belief.</a></li>
-                        </ol>
+                        <h4>Danh mục bài đăng</h4>
+                        <ol id="ol"></ol>
                     </div>
                 </div>
                 <div class="clearfix"></div>

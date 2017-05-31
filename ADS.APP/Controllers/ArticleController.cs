@@ -41,6 +41,9 @@ namespace ADS.APP.Controllers
             Article free = new Models.Article();
             Custommer Cus = new Custommer();
             Image img = new Image();
+            string FullName = form["fullname"].ToString();
+            string SDT = form["phone"].ToString();
+            string Mail = form["addressemail"].ToString();
 
             if (Free_Article.AdvandeArticle != null)
             {
@@ -49,12 +52,22 @@ namespace ADS.APP.Controllers
                 free.Status = "W";
                 free.ProvinceId = int.Parse(form["Province"].ToString());
                 free.DistrictId = int.Parse(form["District"].ToString());
-                free.PhoneNumber = Free_Article.Cus.PhoneNumber;
-                free.UserNameFree = Free_Article.Cus.FullName;
-                free.EmailFree = Free_Article.Cus.Email;
+                if (FullName != null && SDT != null && Mail != null)
+                {
+                    free.PhoneNumber = int.Parse(SDT.ToString());
+                    free.UserNameFree = FullName;
+                    free.EmailFree = Mail;
+                }
+                else
+                {
+                    free.PhoneNumber = Free_Article.Cus.PhoneNumber;
+                    free.UserNameFree = Free_Article.Cus.FullName;
+                    free.EmailFree = Free_Article.Cus.Email;
+                }
+
                 free.Price = Free_Article.AdvandeArticle.Price;
                 free.Article_Type = "N";
-                free.Create_Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss.fff", CultureInfo.InvariantCulture);
+                free.Create_Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                 free.CategoryId = Free_Article.AdvandeArticle.CategoryId;
                 db.Articles.Add(free);
                 db.SaveChanges();
@@ -66,7 +79,7 @@ namespace ADS.APP.Controllers
                         {
                             if (Path.GetExtension(file.FileName).ToLower() == ".jpg" || Path.GetExtension(file.FileName).ToLower() == ".png" || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
                             {
-                                string name = file.FileName.ToString() + "_" + DateTime.Now.Date.ToString("dd") + "_" + DateTime.Now.Month.ToString("MM") + "_" + DateTime.Now.Year + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString() + "_" + DateTime.Now.Ticks.ToString();
+                                string name = DateTime.Now.Date.ToString("dd") + "_" + DateTime.Now.Month.ToString("MM") + "_" + DateTime.Now.Year + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString() + "_" + DateTime.Now.Ticks.ToString() + "_" + file.FileName.ToString();
                                 path = Path.Combine(Server.MapPath("~/Image/User"), name);
                                 file.SaveAs(path);
                                 img.Name = name;
@@ -78,10 +91,6 @@ namespace ADS.APP.Controllers
                     }
                 }
             }
-
-
-
-
             return RedirectToAction("PageSuccess", "Article");
         }
         public ActionResult AdvandArticleCreate()
@@ -124,10 +133,25 @@ namespace ADS.APP.Controllers
             {
                 if (Article.AdvandeArticle != null)
                 {
+                    Cus.ArticleId = Art.Id;
+                    Cus.PhoneNumber = int.Parse(form["phone"].ToString());
+                    Cus.FullName = form["fullname"].ToString();
+                    Cus.Email = form["addressemail"].ToString();
+                    db.Custommers.Add(Cus);
+                    db.SaveChanges();
+
+
                     Art.Decreption = Article.AdvandeArticle.Decreption;
                     Art.Title = Article.AdvandeArticle.Title;
-                    Art.Create_Date = DateTime.Now.ToString("dd/MM/yyy");
+                    Art.Create_Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
                     Art.CardId = int.Parse(form["TypeCard"].ToString());
+                    Art.CustommerId = Cus.Id;
+                    Art.Status = "W";
+                    Art.Price = Article.AdvandeArticle.Price;
+                    Art.Article_Type = "Y";
+                    Art.ProvinceId = int.Parse(form["Province"].ToString());
+                    Art.DistrictId = int.Parse(form["District"].ToString());
+                    Art.CategoryId = Article.AdvandeArticle.CategoryId;
                     db.Articles.Add(Art);
                     db.SaveChanges();
                     if (fileselect != null)
@@ -138,7 +162,7 @@ namespace ADS.APP.Controllers
                             {
                                 if (Path.GetExtension(file.FileName).ToLower() == ".jpg" || Path.GetExtension(file.FileName).ToLower() == ".png" || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
                                 {
-                                    string name = file.FileName.ToString() + "_" + DateTime.Now.Date.ToString("dd") + "_" + DateTime.Now.Month.ToString("MM") + "_" + DateTime.Now.Year + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString() + "_" + DateTime.Now.Ticks.ToString();
+                                    string name = DateTime.Now.Date.ToString("dd") + "_" + DateTime.Now.Month.ToString("MM") + "_" + DateTime.Now.Year + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString() + "_" + DateTime.Now.Ticks.ToString() + "_" + file.FileName.ToString();
                                     path = Path.Combine(Server.MapPath("~/Image/User"), name);
                                     file.SaveAs(path);
                                     img.Name = name;
@@ -149,12 +173,7 @@ namespace ADS.APP.Controllers
                             }
                         }
                     }
-                    Cus.ArticleId = Art.Id;
-                    Cus.PhoneNumber = int.Parse(form["phone"].ToString());
-                    Cus.FullName = form["fullname"].ToString();
-                    Cus.Email = form["addressemail"].ToString();
-                    db.Custommers.Add(Cus);
-                    db.SaveChanges();
+
                     string text = "";
                     string type = "";
                     type = form["TypeCard"].ToString();
@@ -172,6 +191,7 @@ namespace ADS.APP.Controllers
                     }
                     card.Type = text;
                     card.CustommerId = Cus.Id;
+                    card.Price = double.Parse(form["CardPrice"].ToString());
                     db.Cards.Add(card);
                     db.SaveChanges();
                 }
@@ -183,14 +203,35 @@ namespace ADS.APP.Controllers
 
             return RedirectToAction("PageSuccess", "Article");
         }
-        public ActionResult Mobie()
+        public ActionResult Mobie(FormCollection form)
         {
-            List<Article> lstArticle = db.Articles.Where(n => n.CategoryId == 7).ToList();
-            return View(lstArticle);
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == null && method == "111")
+                {
+                    List<Article> lstArticle = db.Articles.Where(n => n.CategoryId == 1).ToList();
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    List<Article> lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 1).ToList();
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    List<Article> lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 1).ToList();
+                    return View(lstArticle);
+
+                }
+            }
+            return View(db.Articles.Where(n => n.CategoryId == 1).ToList());
         }
         public ActionResult Detail(int Id)
         {
-            Article Arti = db.Articles.SingleOrDefault(n=>n.Id == Id);
+            Article Arti = db.Articles.SingleOrDefault(n => n.Id == Id);
             return View(Arti);
 
         }
@@ -201,6 +242,14 @@ namespace ADS.APP.Controllers
         public ActionResult PageError()
         {
             return View();
+        }
+        [HttpPost]
+        public ActionResult Seach(string keyseach, FormCollection form)
+        {
+            int ProvinceId = int.Parse(form["Province"].ToString());
+            int CategoryId = int.Parse(form["Menu"].ToString());
+            List<Article> Article = db.Articles.Where(n => n.Title.Contains(keyseach) && n.ProvinceId == ProvinceId && n.CategoryId == CategoryId).ToList();
+            return View(Article);
         }
 
     }
