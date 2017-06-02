@@ -33,8 +33,28 @@ namespace ADS.APP.Controllers
             ViewBag.lstDop = lstDrop;
             return View();
         }
+        public ActionResult ArticleAdd()
+        {
+            List<Category> oCategory = db.Categories.Where(n => n.CategoryId == 1).ToList();
+            List<SelectListItem> lstDrop = new List<SelectListItem>();
+            lstDrop.Add(new SelectListItem
+            {
+                Value = "",
+                Text = "Danh mục đăng bài"
+            });
+            foreach (var list in oCategory)
+            {
+                lstDrop.Add(new SelectListItem
+                {
+                    Text = list.Name,
+                    Value = list.Id.ToString()
+                });
+            }
+            ViewBag.lstDop = lstDrop;
+            return View();
+        }
         [HttpPost]
-        public ActionResult ArticleFreeAdd(ArticleViewModel Free_Article, IEnumerable<HttpPostedFileBase> fileselect, FormCollection form)
+        public ActionResult ArticleAdd(ArticleViewModel Free_Article, IEnumerable<HttpPostedFileBase> fileselect, FormCollection form)
         {
             Category cate = new Category();
             string path = "";
@@ -45,6 +65,7 @@ namespace ADS.APP.Controllers
             string SDT = form["phone"].ToString();
             string Mail = form["addressemail"].ToString();
 
+
             if (Free_Article.AdvandeArticle != null)
             {
                 free.Decreption = Free_Article.AdvandeArticle.Decreption;
@@ -52,18 +73,63 @@ namespace ADS.APP.Controllers
                 free.Status = "W";
                 free.ProvinceId = int.Parse(form["Province"].ToString());
                 free.DistrictId = int.Parse(form["District"].ToString());
-                if (FullName != null && SDT != null && Mail != null)
+
+                free.PhoneNumber = int.Parse(SDT.ToString());
+                free.UserNameFree = FullName;
+                free.EmailFree = Mail;
+
+
+                free.Price = Free_Article.AdvandeArticle.Price;
+                free.Article_Type = "N";
+                free.Create_Date = DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss", CultureInfo.InvariantCulture);
+                free.CategoryId = Free_Article.AdvandeArticle.CategoryId;
+                db.Articles.Add(free);
+                db.SaveChanges();
+                if (fileselect != null)
                 {
-                    free.PhoneNumber = int.Parse(SDT.ToString());
-                    free.UserNameFree = FullName;
-                    free.EmailFree = Mail;
+                    foreach (var file in fileselect)
+                    {
+                        if (file.ContentLength > 0)
+                        {
+                            if (Path.GetExtension(file.FileName).ToLower() == ".jpg" || Path.GetExtension(file.FileName).ToLower() == ".png" || Path.GetExtension(file.FileName).ToLower() == ".jpeg")
+                            {
+                                string name = DateTime.Now.Date.ToString("dd") + "_" + DateTime.Now.Month.ToString("MM") + "_" + DateTime.Now.Year + "_" + DateTime.Now.Hour.ToString() + "_" + DateTime.Now.Minute.ToString() + "_" + DateTime.Now.Second.ToString() + "_" + DateTime.Now.Ticks.ToString() + "_" + file.FileName.ToString();
+                                path = Path.Combine(Server.MapPath("~/Image/User"), name);
+                                file.SaveAs(path);
+                                img.Name = name;
+                                img.ImageId = free.Id;
+                                db.Images.Add(img);
+                                db.SaveChanges();
+                            }
+                        }
+                    }
                 }
-                else
-                {
-                    free.PhoneNumber = Free_Article.Cus.PhoneNumber;
-                    free.UserNameFree = Free_Article.Cus.FullName;
-                    free.EmailFree = Free_Article.Cus.Email;
-                }
+            }
+            return RedirectToAction("PageSuccess", "Article");
+        }
+        [HttpPost]
+        public ActionResult ArticleFreeAdd(ArticleViewModel Free_Article, IEnumerable<HttpPostedFileBase> fileselect, FormCollection form)
+        {
+            Category cate = new Category();
+            string path = "";
+            Article free = new Models.Article();
+            Custommer Cus = new Custommer();
+            Image img = new Image();
+
+
+
+            if (Free_Article.AdvandeArticle != null)
+            {
+                free.Decreption = Free_Article.AdvandeArticle.Decreption;
+                free.Title = Free_Article.AdvandeArticle.Title;
+                free.Status = "W";
+                free.ProvinceId = int.Parse(form["Province"].ToString());
+                free.DistrictId = int.Parse(form["District"].ToString());
+
+                free.PhoneNumber = Free_Article.Cus.PhoneNumber;
+                free.UserNameFree = Free_Article.Cus.FullName;
+                free.EmailFree = Free_Article.Cus.Email;
+
 
                 free.Price = Free_Article.AdvandeArticle.Price;
                 free.Article_Type = "N";
@@ -203,6 +269,7 @@ namespace ADS.APP.Controllers
 
             return RedirectToAction("PageSuccess", "Article");
         }
+        [HttpPost]
         public ActionResult Mobie(FormCollection form)
         {
             if (form.Count > 0)
@@ -227,6 +294,11 @@ namespace ADS.APP.Controllers
 
                 }
             }
+            return View();
+        }
+        public ActionResult Mobie()
+        {
+
             return View(db.Articles.Where(n => n.CategoryId == 1).ToList());
         }
         public ActionResult Detail(int Id)

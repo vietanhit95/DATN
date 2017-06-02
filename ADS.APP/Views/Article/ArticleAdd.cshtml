@@ -15,7 +15,7 @@
         <h2 class="head">Đăng bài</h2>
 
         <div class="post-ad-form">
-            @using (Html.BeginForm("ArticleFreeAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("ArticleAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
                 @Html.ValidationSummary(true)
                 <label>Tỉnh/Thành phố</label>
@@ -52,18 +52,16 @@
                     <script src="~/Content/js/filedrag.js"></script>
                 </div>
 
+
                 <div class="personal-details">
                     <label>Họ tên <span>*</span></label>
-                    @Html.TextBoxFor(n => n.Cus.FullName, new { @class = "name" })
-                    @Html.ValidationMessageFor(n => n.Cus.FullName)
+                    <input type="text" name="fullname" value="@cus.FullName" class="name" required="" />
                     <div class="clearfix"></div>
                     <label>Số điện thoại <span>*</span></label>
-                    @Html.TextBoxFor(n => n.Cus.PhoneNumber, new { @class = "phone" })
-                    @Html.ValidationMessageFor(n => n.Cus.PhoneNumber)
+                    <input type="text" name="phone" value="@cus.PhoneNumber" class="phone" required="" />
                     <div class="clearfix"></div>
                     <label>Địa chỉ Email<span>*</span></label>
-                    @Html.TextBoxFor(n => n.Cus.Email, new { @class = "email" })
-                    @Html.ValidationMessageFor(n => n.Cus.Email)
+                    <input type="text" name="addressemail" value="@cus.Email" class="email" required="" />
                     <div class="clearfix"></div>
                     <p class="post-terms">Hoặc nếu bạn muốn vị trí bài viết của bạn luôn ở khoảng trên cùng thì bạn có thể thực hiện <a href="/Article/AdvandArticleCreate">Đăng bài tin phí </a></p>
                     <div class="clearfix"></div>

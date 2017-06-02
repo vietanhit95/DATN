@@ -157,11 +157,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul id="flexiselDemo3">
 
                             <li>
-                                @foreach (var arti in article)
+                                @foreach (var arti in article.Take(4))
                                 {
+
+                                    Image Img = db.Images.SingleOrDefault(n => n.ImageId == arti.Id);
                                     <div class="col-md-3 biseller-column">
-                                        <a href="single.html">
-                                            <img src="~/Content/images/p9.jpg" />
+                                        <a href="/Article/Detail/@arti.Id">
+                                            <img src="/Image/User/@Img.Name" />
                                             <span class="price">&#36; @arti.Price</span>
                                         </a>
                                         <div class="ad-info">
@@ -171,9 +173,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                     </div>
                                 }
                             </li>
-
-
-
                         </ul>
                         <script type="text/javascript">
                             $(window).load(function () {

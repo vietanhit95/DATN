@@ -13,7 +13,7 @@ namespace ADS.APP.Areas.Admin.Controllers
         {
             if (Session["AdminLogin"] == null)
             {
-                return RedirectToAction("Login", "User", new { Areas = "Admin" });
+                return RedirectToAction("Login", "AdminUser", new { Areas = "Admin" });
             }
             else
             {

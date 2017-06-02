@@ -1,10 +1,23 @@
 ﻿
 @{
     Layout = null;
+    ADS.APP.Models.Custommer cus = new ADS.APP.Models.Custommer();
+    if (Session["Login"] != "")
+    {
+        cus = (ADS.APP.Models.Custommer)Session["Login"];
+    }
 }
 
 <div class="container">
     <h1><span class="segment-heading"> Đăng Thoải Mái, </span> Hái Đồ Hay.</h1>
     <p>Nơi đây sẽ có sự trao đổi hàng hóa cũ,mới thuận tiện nhất.</p>
-    <a href="/Article/ArticleCreate">Đăng tin</a>
+    @if (cus != null)
+    {
+        <a href="/Article/ArticleAdd">Đăng tin</a>
+    }
+    else
+    {
+        <a href="/Article/ArticleCreate">Đăng tin</a>
+    }
+    
 </div>
