@@ -22,6 +22,21 @@ namespace ADS.APP.Areas.Admin.Controllers
         {
             return PartialView();
         }
-    
+        [HttpPost]
+        public JsonResult DeleteCus(int id)
+        {
+            var free = db.Custommers.ToList().Find(n => n.Id == id);
+
+            if (free != null)
+            {
+                db.Custommers.Remove(free);
+                db.SaveChanges();
+            }
+            List<Article> Fre = db.Articles.ToList();
+            return Json(Fre, JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }

@@ -57,12 +57,12 @@
     <EntitySetMapping Name="Custommers">
       <EntityTypeMapping TypeName="ADS_DBModel.Custommer">
         <MappingFragment StoreEntitySet="Custommer">
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="PassWord" ColumnName="PassWord" />
           <ScalarProperty Name="ArticleId" ColumnName="ArticleId" />
-          <ScalarProperty Name="ProvinceId" ColumnName="ProvinceId" />
           <ScalarProperty Name="TypeUser" ColumnName="TypeUser" />
           <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />

@@ -157,21 +157,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         <ul id="flexiselDemo3">
 
                             <li>
-                                @foreach (var arti in article.Take(4))
+                                @if (article != null)
                                 {
+                                    foreach (var arti in article.Take(4))
+                                    {
 
-                                    Image Img = db.Images.SingleOrDefault(n => n.ImageId == arti.Id);
-                                    <div class="col-md-3 biseller-column">
-                                        <a href="/Article/Detail/@arti.Id">
-                                            <img src="/Image/User/@Img.Name" />
-                                            <span class="price">&#36; @arti.Price</span>
-                                        </a>
-                                        <div class="ad-info">
-                                            <h5>@arti.Title</h5>
-                                            <span>@(arti.Create_Date)</span>
+
+                                        <div class="col-md-3 biseller-column">
+                                            <a href="/Article/Detail/@arti.Id">
+                                                <img src="~/Content/images/p1.jpg" />
+                                                <span class="price">&#36; @arti.Price</span>
+                                            </a>
+                                            <div class="ad-info">
+                                                <h5>@arti.Title</h5>
+                                                <span>@(arti.Create_Date)</span>
+                                            </div>
                                         </div>
-                                    </div>
+                                    }
                                 }
+                                
                             </li>
                         </ul>
                         <script type="text/javascript">

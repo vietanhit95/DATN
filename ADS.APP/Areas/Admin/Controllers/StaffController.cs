@@ -23,5 +23,21 @@ namespace ADS.APP.Areas.Admin.Controllers
                 return View(lstCategory);
             }
         }
+        public ActionResult StaffCreate()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult StaffCreate(Staff staff)
+        {
+            var Cus = db.Staffs.ToList().Find(n => n.UserName == staff.UserName);
+            if (Cus == null)
+            {
+                db.Staffs.Add(staff);
+                db.SaveChanges();
+            }
+            List<Staff> lstCus = db.Staffs.ToList();
+            return Json(lstCus, JsonRequestBehavior.AllowGet);
+        }
     }
 }

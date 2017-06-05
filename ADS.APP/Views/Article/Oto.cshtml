@@ -1,0 +1,268 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<ADS.APP.Models.Article>
+@using ADS.APP.Models;
+@{
+    Layout = null;
+    ADS_Entities db = new ADS_Entities();
+    var province = db.Provinces.ToList();
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Rao Vặt Online | Trang Chủ</title>
+    <link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/css/bootstrap-select.css">
+    <link href="~/Content/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-ui1.css">
+    <!-- for-mobile-apps -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Resale Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //for-mobile-apps -->
+    <!--fonts-->
+    <!--//fonts-->
+    <!-- js -->
+    <script type="text/javascript" src="~/Content/js/jquery.min.js"></script>
+    <!-- js -->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap-select.js"></script>
+    <script>
+        $(document).ready(function () {
+            var mySelect = $('#first-disabled2');
+
+            $('#special').on('click', function () {
+                mySelect.find('option:selected').prop('disabled', true);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#special2').on('click', function () {
+                mySelect.find('option:disabled').prop('disabled', false);
+                mySelect.selectpicker('refresh');
+            });
+
+            $('#basic2').selectpicker({
+                liveSearch: true,
+                maxOptions: 1
+            });
+        });
+    </script>
+    <script type="text/javascript" src="~/Content/js/jquery.leanModal.min.js"></script>
+    <link href="~/Content/css/jquery.uls.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.uls.grid.css" rel="stylesheet" />
+    <link href="~/Content/css/jquery.uls.lcd.css" rel="stylesheet" />
+    <!-- Source -->
+    <script src="~/Content/js/jquery.uls.data.js"></script>
+    <script src="~/Content/js/jquery.uls.data.utils.js"></script>
+    <script src="~/Content/js/jquery.uls.lcd.js"></script>
+    <script src="~/Content/js/jquery.uls.languagefilter.js"></script>
+    <script src="~/Content/js/jquery.uls.regionfilter.js"></script>
+    <script src="~/Content/js/jquery.uls.core.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.uls-trigger').uls({
+                onSelect: function (language) {
+                    var languageName = $.uls.data.getAutonym(language);
+                    $('.uls-trigger').text(languageName);
+                },
+                quickList: ['en', 'hi', 'he', 'ml', 'ta', 'fr'] //FIXME
+            });
+        });
+    </script>
+    <script src="~/Content/js/tabs.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var elem = $('#container ul');
+            $('#viewcontrols a').on('click', function (e) {
+                if ($(this).hasClass('gridview')) {
+                    elem.fadeOut(1000, function () {
+                        $('#container ul').removeClass('list').addClass('grid');
+                        $('#viewcontrols').removeClass('view-controls-list').addClass('view-controls-grid');
+                        $('#viewcontrols .gridview').addClass('active');
+                        $('#viewcontrols .listview').removeClass('active');
+                        elem.fadeIn(1000);
+                    });
+                }
+                else if ($(this).hasClass('listview')) {
+                    elem.fadeOut(1000, function () {
+                        $('#container ul').removeClass('grid').addClass('list');
+                        $('#viewcontrols').removeClass('view-controls-grid').addClass('view-controls-list');
+                        $('#viewcontrols .gridview').removeClass('active');
+                        $('#viewcontrols .listview').addClass('active');
+                        elem.fadeIn(1000);
+                    });
+                }
+            });
+            $("select").change(function () {
+                $(this).parents("form").submit();
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header">
+        @Html.Partial("~/Views/Shared/_HeaderPartial.cshtml")
+    </div>
+    <div class="banner text-center">
+        <div class="container">
+            @Html.Partial("~/Views/Shared/_BanerPartial.cshtml")
+        </div>
+    </div>
+    <!-- Mobiles -->
+    <div class="total-ads main-grid-border">
+        <div class="container">
+            @using (Html.BeginForm("Seach", "Article", FormMethod.Post))
+            {
+                <div class="select-box">
+
+                    <div class="select-city-for-local-ads ads-list">
+                        <label>Tỉnh/Thành phố</label>
+                        <select id="Province" name="Province"></select>
+                    </div>
+                    <div class="browse-category ads-list">
+                        <label>Danh mục</label>
+                        <select class="selectpicker show-tick" data-live-search="true" id="Menu" name="Menu"></select>
+                    </div>
+                    <div class="search-product ads-list">
+                        <label>Tên đồ muốn tìm </label>
+                        <div class="search">
+                            <div id="custom-search-input">
+                                <div class="input-group">
+                                    <input name="keyseach" type="text" class="form-control input-lg" placeholder="Tên đồ muốn tìm" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info btn-lg" type="submit">
+                                            <i class="glyphicon glyphicon-search"></i>
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+                </div>
+            }
+            <ol class="breadcrumb" style="margin-bottom: 5px;">
+                <li><a href="/">Trang chủ</a></li>
+                <li><a>Ô tô và Xe máy</a></li>
+            </ol>
+            <div class="ads-grid">
+                <div class="side-bar col-md-3" style="border: 1px solid #CCCCCC !important;">
+                    <div class="featured-ads">
+                        <h2 class="sear-head fer">Bài đăng nổi bật</h2>
+                        @if (Model.Count > 0)
+                        {
+                            foreach (var item1 in Model.Take(3))
+                            {
+                                Image img = db.Images.FirstOrDefault(n => n.ImageId == item1.Id);
+                                <div class="featured-ad">
+                                    <a href="/Article/Detail/@item1.Id">
+                                        <div class="featured-ad-left">
+                                            <img src="~/Image/User/@img.Name" title="ad image" alt="" />
+                                        </div>
+                                        <div class="featured-ad-right">
+                                            <h4>@item1.Title</h4>
+                                            <p>@(item1.Price.ToString() + "Vnđ")</p>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="ads-display col-md-9">
+                    <div class="wrapper">
+                        <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                            <ul id="myTab" class="nav nav-tabs nav-tabs-responsive" role="tablist">
+                                <li role="presentation" class="active">
+                                    <a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true">
+                                        <span class="text">Tất cả</span>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div id="myTabContent" class="tab-content">
+                                <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+                                    <div>
+                                        <div id="container">
+                                            <div class="view-controls-list" id="viewcontrols">
+                                                <label>Hiển thị :</label>
+                                                <a class="gridview"><i class="glyphicon glyphicon-th"></i></a>
+                                                <a class="listview active"><i class="glyphicon glyphicon-th-list"></i></a>
+                                            </div>
+                                            @using (Html.BeginForm("Oto", "Article", FormMethod.Post))
+                                            {
+                                                <div class="form-group pull-right">
+                                                    <div class="row">
+                                                        <select class="form-control" name="select" id="select">
+                                                            <option value="" class="form-control">Sắp xếp theo</option>
+                                                            <option value="111" class="form-control">Bài gần nhất</option>
+                                                            <option value="222" class="form-control">Giá từ cao xuống thấp</option>
+                                                            <option value="333" class="form-control">Giá từ thấp đến cao</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                            }
+                                            <div class="clearfix"></div>
+                                            <ul class="list">
+                                                @if (Model.Count > 0)
+                                                {
+
+                                                    foreach (var item in Model)
+                                                    {
+                                                        Image img = db.Images.FirstOrDefault(n => n.ImageId == item.Id);
+                                                        <a href="/Article/Detail/@item.Id">
+                                                            <li>
+                                                                <img src="~/Image/User/@img.Name" title="" alt="Image" />
+                                                                <section class="list-left">
+                                                                    <h5 class="title">@item.Title</h5>
+                                                                    <span class="adprice">@(item.Price.ToString() + "Vnđ")</span>
+                                                                    <p class="catpath">Trang chủ » Ô tô và Xe máy</p>
+                                                                </section>
+                                                                <section class="list-right">
+                                                                    <span class="date">@item.Create_Date.ToString()</span>
+                                                                    <span class="cityname">@province.SingleOrDefault(n => n.Id == item.ProvinceId).Name</span>
+                                                                </section>
+                                                                <div class="clearfix"></div>
+                                                            </li>
+                                                        </a>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="/Article/Detail">
+                                                        <li>
+                                                            Không tìm thấy dữ liệu
+                                                            <div class="clearfix"></div>
+                                                        </li>
+                                                    </a>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="text-center">
+                                    @Html.PagedListPager(Model, p => Url.Action("Oto", new { page = p }))
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+    <!-- // Mobiles -->
+    <!--footer section start-->
+    @Html.Partial("~/Views/Shared/_FooterPartial.cshtml")
+    <!--footer section end-->
+</body>
+</html>

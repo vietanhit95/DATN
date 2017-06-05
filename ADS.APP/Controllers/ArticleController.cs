@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using ADS.APP.Models;
 using System.IO;
 using System.Globalization;
+using PagedList;
+using PagedList.Mvc;
 
 namespace ADS.APP.Controllers
 {
@@ -269,38 +271,403 @@ namespace ADS.APP.Controllers
 
             return RedirectToAction("PageSuccess", "Article");
         }
+        #region Mobie
         [HttpPost]
-        public ActionResult Mobie(FormCollection form)
+        public ActionResult Mobie(int? page, FormCollection form)
         {
             if (form.Count > 0)
             {
                 string method = form["select"].ToString();
-                if (method == null && method == "111")
+                if (method == "111")
                 {
-                    List<Article> lstArticle = db.Articles.Where(n => n.CategoryId == 1).ToList();
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8);
                     return View(lstArticle);
 
                 }
                 else if (method == "333")
                 {
-                    List<Article> lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 1).ToList();
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8);
                     return View(lstArticle);
 
                 }
                 else if (method == "222")
                 {
-                    List<Article> lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 1).ToList();
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8);
                     return View(lstArticle);
 
                 }
             }
             return View();
         }
-        public ActionResult Mobie()
+        public ActionResult Mobie(int? page)
         {
-
-            return View(db.Articles.Where(n => n.CategoryId == 1).ToList());
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8));
         }
+
+        #endregion
+        #region Laptop
+        [HttpPost]
+        public ActionResult Laptop(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Laptop(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region PC
+        [HttpPost]
+        public ActionResult PC(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult PC(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Ô tô và xe máy
+        [HttpPost]
+        public ActionResult Oto(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Oto(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Đồ dùng gia đình
+        [HttpPost]
+        public ActionResult do_dung_gia_dinh(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 7 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 7 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 7 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult do_dung_gia_dinh(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 7 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Nhà đất
+        [HttpPost]
+        public ActionResult Nha_dat(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 8 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 8 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 8 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Nha_dat(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 8 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Thú cưng
+        [HttpPost]
+        public ActionResult Thu_cung(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 9 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 9 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 9 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Thu_cung(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 9 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Books
+        [HttpPost]
+        public ActionResult Books(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 10 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 10 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 10 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Books(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 10 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Quan_ao
+        [HttpPost]
+        public ActionResult Quan_ao(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 11 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 11 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 11 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Quan_ao(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 11 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Do_dung_tre_em
+        [HttpPost]
+        public ActionResult Do_dung_tre_em(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 12 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 12 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 12 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Do_dung_tre_em(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 12 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Do_kim_khi
+        [HttpPost]
+        public ActionResult Do_kim_khi(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 13 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 13 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 13 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Do_kim_khi(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 13 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
+        #region Dich_vu
+        [HttpPost]
+        public ActionResult Dich_vu(int? page, FormCollection form)
+        {
+            if (form.Count > 0)
+            {
+                string method = form["select"].ToString();
+                if (method == "111")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Create_Date).Where(n => n.CategoryId == 14 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "333")
+                {
+                    var lstArticle = db.Articles.OrderByDescending(n => n.Price).Where(n => n.CategoryId == 14 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+                else if (method == "222")
+                {
+                    var lstArticle = db.Articles.OrderBy(n => n.Price).Where(n => n.CategoryId == 14 && n.Status == "Y").ToPagedList(page ?? 1, 8);
+                    return View(lstArticle);
+
+                }
+            }
+            return View();
+        }
+        public ActionResult Dich_vu(int? page)
+        {
+            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 14 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        #endregion
         public ActionResult Detail(int Id)
         {
             Article Arti = db.Articles.SingleOrDefault(n => n.Id == Id);

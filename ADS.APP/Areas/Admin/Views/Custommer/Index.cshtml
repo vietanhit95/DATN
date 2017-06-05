@@ -1,9 +1,11 @@
 ﻿@model  ADS.APP.Models.CustommerViewModels
+@using ADS.APP.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
-
+    ADS_Entities db = new ADS_Entities();
 }
+<script src="~/Scripts/ADS/Admin.js"></script>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -50,7 +52,7 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
-        <div class="portlet light bordered">
+        <div class="portlet light bordered" id="div">
             <div class="portlet-title">
                 <div class="caption font-dark">
                     <i class="icon-settings font-dark"></i>
@@ -66,9 +68,9 @@
                                         thêm mới
                                         <i class="fa fa-plus"></i>
                                     </button>*@
-                                <a class="btn sbold green" onclick="Custommer.ViewCreate()">
+                                @*<a class="btn sbold green" onclick="Custommer.ViewCreate()">
                                     Thêm mới <i class="fa fa-plus"></i>
-                                </a>
+                                </a>*@
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
@@ -82,7 +84,7 @@
                 </div>
                 <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
                     <div class="table-scrollable">
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="sample_1" role="grid" aria-describedby="sample_1_info">
+                        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="table_cus" role="grid" aria-describedby="sample_1_info">
                             <thead>
                                 @*<tr role="row">
                                         <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 66px;">
@@ -116,6 +118,7 @@
                                     <td class="w80 text-center">
                                         Trạng thái
                                     </td>
+                                    <td>...</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -123,18 +126,17 @@
                                 {
                                     foreach (var Cus in Model.lstCustommer)
                                     {
-                                <tr>
-                                    <td>@((Cus.Id + 1).ToString("0"))</td>
-                                    <td>@Cus.FullName</td>
-
-                                    @foreach (var Pro in Model.lstProvince.Where(n => n.Id == Cus.ProvinceId))
-                                            {
-                                            <td>@Pro.Name</td>
-                                            }
-                                    <td>@Cus.UserName</td>
-                                    <td>@Cus.PassWord</td>
-                                    <td>@Cus.Status</td>
-                                </tr>
+                                        <tr>
+                                            <td>@((Cus.Id + 1).ToString("0"))</td>
+                                            <td>@Cus.FullName</td>
+                                            <td>@Cus.Address</td>
+                                            <td>@Cus.UserName</td>
+                                            <td>@Cus.PassWord</td>
+                                            <td>@Cus.Status</td>
+                                            <td>
+                                                <a href="javascript:void(0)" onclick="Admin.DeleteCus(@Cus.Id)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
                                     }
                                 }
                             </tbody>

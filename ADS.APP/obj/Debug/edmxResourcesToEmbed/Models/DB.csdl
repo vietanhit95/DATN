@@ -58,12 +58,12 @@
     <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="PassWord" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="ArticleId" Type="Int32" />
-    <Property Name="ProvinceId" Type="Int32" />
     <Property Name="TypeUser" Type="Int32" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Name="PhoneNumber" Type="Int32" />
     <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Free_Article_Id" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="District">
     <Key>

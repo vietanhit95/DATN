@@ -37,12 +37,14 @@ namespace ADS.APP.Controllers
         [HttpPost]
         public ActionResult CustommerCreate(FormCollection form)
         {
+            
             Custommer cus = new Custommer();
             cus.FullName = form["fullname"].ToString();
             cus.UserName = form["username"].ToString();
             cus.PassWord = form["pass"].ToString();
             cus.PhoneNumber = int.Parse(form["phone"].ToString());
             cus.Email = form["email"].ToString();
+            cus.Address = form["address"].ToString();
             List<Custommer> lstCus = db.Custommers.Where(n => n.UserName == cus.UserName).ToList();
             if (lstCus.Count == 0)
             {

@@ -58,7 +58,7 @@
     <Property Name="UserName" Type="nvarchar" MaxLength="200" />
     <Property Name="PassWord" Type="nvarchar" MaxLength="200" />
     <Property Name="ArticleId" Type="int" />
-    <Property Name="ProvinceId" Type="int" />
+    <Property Name="Address" Type="nvarchar" MaxLength="400" />
     <Property Name="TypeUser" Type="int" />
     <Property Name="Status" Type="nvarchar" MaxLength="1" />
     <Property Name="PhoneNumber" Type="int" />

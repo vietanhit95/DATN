@@ -85,8 +85,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="graphs">
 
                 <div class="sign-up">
-                    <h1>Tạo tài khoản</h1>
-                    <h2>Thông tin cá nhân</h2>
+                    <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
                     @using (Html.BeginForm("CustommerCreate", "User", FormMethod.Post))
                     {
                         <div class="sign-u">
@@ -95,6 +94,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             </div>
                             <div class="sign-up2">
                                 <input type="text" name="fullname" placeholder="Họ và Tên" required="" />
+                            </div>
+                            <div class="clearfix"> </div>
+                        </div>
+                        <div class="sign-u">
+                            <div class="sign-up1">
+                                <h4>Địa chỉ</h4>
+                            </div>
+                            <div class="sign-up2">
+                                <input type="text" name="address" placeholder="Địa chỉ" required="" />
                             </div>
                             <div class="clearfix"> </div>
                         </div>
@@ -121,7 +129,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <h4>Địa chỉ Email</h4>
                             </div>
                             <div class="sign-up2">
-                                <input type="text" name="email"  placeholder="Địa chỉ Email" required="" />
+                                <input type="text" name="email" placeholder="Địa chỉ Email" required="" />
                             </div>
                             <div class="clearfix"> </div>
                         </div>

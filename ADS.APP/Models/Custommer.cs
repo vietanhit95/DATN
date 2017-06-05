@@ -19,11 +19,11 @@ namespace ADS.APP.Models
         public string UserName { get; set; }
         public string PassWord { get; set; }
         public Nullable<int> ArticleId { get; set; }
-        public Nullable<int> ProvinceId { get; set; }
         public Nullable<int> TypeUser { get; set; }
         public string Status { get; set; }
         public Nullable<int> PhoneNumber { get; set; }
         public string Email { get; set; }
         public Nullable<int> Free_Article_Id { get; set; }
+        public string Address { get; set; }
     }
 }
