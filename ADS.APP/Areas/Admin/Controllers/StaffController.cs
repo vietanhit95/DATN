@@ -36,8 +36,16 @@ namespace ADS.APP.Areas.Admin.Controllers
                 db.Staffs.Add(staff);
                 db.SaveChanges();
             }
-            List<Staff> lstCus = db.Staffs.ToList();
-            return Json(lstCus, JsonRequestBehavior.AllowGet);
+            var lstCustomer = db.Staffs.Select(a => new
+            {
+                id = a.Id,
+                fullname = a.FullName,
+                address = a.Address,
+                username = a.UserName,
+                status = a.Status,
+            }).ToList();
+
+            return Json(lstCustomer, JsonRequestBehavior.AllowGet);
         }
     }
 }

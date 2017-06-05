@@ -40,8 +40,25 @@
         </div>
         <script>
             $("#CreateStaff").click(function () {
-                div.innerHtml = '';
-                $("#div").load("/Admin/Staff/Index #table_staff");
+                $.ajax({
+                    url: "/Admin/Staff/StaffCreate",
+                    type: "POST",
+                    cache: false,
+                    success: function (data) {
+                        let html = '';
+                        html += '<tr>'
+                        html += '< td class="text-center" ></td >'
+                        html += '<td class="text-center">' + data.fullname + '</td>'
+                        html += '<td class="text-center">' + data.address + '</td>'
+                        html += '<td class="text-center">' + data.username + '</td>'
+                        html += <td class="text-center"><label class="label label-primary">Hoạt Động</label></td>
+                        html += <td>
+                            html +=         <a href="javascript:void(0)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            html +=       <a href="javascript:void(0)" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                            html +=       '</td>'
+                        html += '</tr>'
+                    }
+                })
             });
         </script>
     }
