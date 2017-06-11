@@ -20,8 +20,8 @@ namespace ADS.APP.Models
         public Nullable<int> ImageId { get; set; }
         public Nullable<int> ProvinceId { get; set; }
         public string Article_Type { get; set; }
-        public Nullable<int> Price { get; set; }
-        public Nullable<int> PhoneNumber { get; set; }
+        public string Price { get; set; }
+        public string PhoneNumber { get; set; }
         public string Create_Date { get; set; }
         public string Status { get; set; }
         public Nullable<int> CategoryId { get; set; }

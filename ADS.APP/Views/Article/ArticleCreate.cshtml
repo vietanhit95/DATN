@@ -10,14 +10,17 @@
 }
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
 <div class="submit-ad main-grid-border">
     <div class="container">
         <h2 class="head">Đăng bài</h2>
 
         <div class="post-ad-form">
+
             @using (Html.BeginForm("ArticleFreeAdd", "Article", FormMethod.Post, new { @enctype = "multipart/form-data" }))
             {
                 @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
                 <label>Tỉnh/Thành phố</label>
                 <select id="Province" name="Province"></select>
                 <div class="clearfix"></div>
@@ -36,7 +39,8 @@
                 @Html.ValidationMessageFor(n => n.AdvandeArticle.Decreption)
                 <div class="clearfix"></div>
                 <label>Giá</label>
-                @Html.TextBoxFor(n => n.AdvandeArticle.Price, new { @class = "phone col-md-6", @placeholder = "Giá" })
+                @Html.TextBoxFor(n => n.AdvandeArticle.Price, new {@id="Price", @class = "phone col-md-6", @placeholder = "Giá", @onkeypress = "return keyPhone(event);" })
+                @Html.ValidationMessageFor(n => n.AdvandeArticle.Price)
                 <div class="clearfix"></div>
                 <div class="upload-ad-photos">
                     <label>Hình ảnh :</label>
@@ -58,12 +62,12 @@
                     @Html.ValidationMessageFor(n => n.Cus.FullName)
                     <div class="clearfix"></div>
                     <label>Số điện thoại <span>*</span></label>
-                    @Html.TextBoxFor(n => n.Cus.PhoneNumber, new { @class = "phone" })
+                    @Html.TextBoxFor(n => n.Cus.PhoneNumber, new { @class = "phone", @onkeypress = "return keyPhone(event);" })
                     @Html.ValidationMessageFor(n => n.Cus.PhoneNumber)
                     <div class="clearfix"></div>
                     <label>Địa chỉ Email<span>*</span></label>
-                    @Html.TextBoxFor(n => n.Cus.Email, new { @class = "email" })
-                    @Html.ValidationMessageFor(n => n.Cus.Email)
+                    @Html.TextBoxFor(n => n.Cus.EmailUser, new { @class = "email" })
+                    @Html.ValidationMessageFor(n => n.Cus.EmailUser)
                     <div class="clearfix"></div>
                     <p class="post-terms">Hoặc nếu bạn muốn vị trí bài viết của bạn luôn ở khoảng trên cùng thì bạn có thể thực hiện <a href="/Article/AdvandArticleCreate">Đăng bài tin phí </a></p>
                     <div class="clearfix"></div>
@@ -73,6 +77,25 @@
 
             }
         </div>
+        <script>
+            $('#Price').mask('000.000.000.000.000', { reverse: true });
+            function keyPhone(e) {
+                var keyword = null;
+                if (window.event) {
+                    keyword = window.event.keyCode;
+                } else {
+                    keyword = e.which;
+                }
+
+                if (keyword < 48 || keyword > 57) {
+                    if (keyword == 48 || keyword == 127) {
+                        return;
+                    }
+                    return false;
+                }
+            }
+        </script>
+
 
     </div>
 </div>

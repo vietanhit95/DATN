@@ -6,9 +6,6 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
         <h4 class="modal-title">Thêm mới nhân viên</h4>
     </div>
-
-    @*@using (Ajax.BeginForm("CategoryCreate", "Category", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Category.OnSuccess(data,'004')" }, new { @id = "fCreate" }))
-        {*@
     @using (Html.BeginForm("StaffCreate", "Staff", FormMethod.Post))
     {
         @Html.ValidationSummary(true)
@@ -35,32 +32,9 @@
             </div>
         </div>
         <div class="modal-footer">
-            <button onclick="CreateStaff()" type="submit" class="btn green" @*onclick="common.Submitform('fCreate', true)"*@>Cập nhật</button>
+            <button type="submit" class="btn green" @*onclick="common.Submitform('fCreate', true)"*@>Cập nhật</button>
             <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
         </div>
-        <script>
-            $("#CreateStaff").click(function () {
-                $.ajax({
-                    url: "/Admin/Staff/StaffCreate",
-                    type: "POST",
-                    cache: false,
-                    success: function (data) {
-                        let html = '';
-                        html += '<tr>'
-                        html += '< td class="text-center" ></td >'
-                        html += '<td class="text-center">' + data.fullname + '</td>'
-                        html += '<td class="text-center">' + data.address + '</td>'
-                        html += '<td class="text-center">' + data.username + '</td>'
-                        html += <td class="text-center"><label class="label label-primary">Hoạt Động</label></td>
-                        html += <td>
-                            html +=         <a href="javascript:void(0)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                            html +=       <a href="javascript:void(0)" class="btn btn-success btn-xs" title="Delete"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                            html +=       '</td>'
-                        html += '</tr>'
-                    }
-                })
-            });
-        </script>
     }
 </div>
 

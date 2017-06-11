@@ -5641,12 +5641,44 @@
     <Content Include="Content\js\tabs.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\sweetalert\bootstrap-sweetalert.png" />
+    <Content Include="Content\sweetalert\docs.css" />
+    <Content Include="Content\sweetalert\sweet-alert.css" />
+    <Content Include="Content\sweetalert\thumbs-up.jpg" />
     <Content Include="Content\TokenInput\jquery.tokeninput.js" />
     <Content Include="Content\TokenInput\jquery.tokeninput.min.js" />
     <Content Include="Content\TokenInput\token-input-facebook.css" />
     <Content Include="Content\TokenInput\token-input.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="img\1.jpg" />
+    <Content Include="img\2.jpg" />
+    <Content Include="img\3.jpg" />
+    <Content Include="img\4.jpg" />
+    <Content Include="img\5.jpg" />
+    <Content Include="img\9\1.gif" />
+    <Content Include="img\9\2.gif" />
+    <Content Include="img\9\3.gif" />
+    <Content Include="img\9\4.gif" />
+    <Content Include="img\9\5.gif" />
+    <Content Include="img\9\6.gif" />
+    <Content Include="img\9\7.gif" />
+    <Content Include="img\9\8.gif" />
+    <Content Include="img\9\9.gif" />
+    <Content Include="img\9\icons.png" />
+    <Content Include="img\9\video-btn.png" />
+    <Content Include="img\a.jpg" />
+    <Content Include="img\abc.jpg" />
+    <Content Include="img\a_s.jpg" />
+    <Content Include="img\b.jpg" />
+    <Content Include="img\b_s.jpg" />
+    <Content Include="img\c.jpg" />
+    <Content Include="img\c_s.jpg" />
+    <Content Include="img\d.jpg" />
+    <Content Include="img\d_s.jpg" />
+    <Content Include="img\mcaudio.mp3" />
+    <Content Include="img\mcaudio2.mp3" />
+    <Content Include="img\mcvideo.mp4" />
     <Content Include="Models\DB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DB.edmx</DependentUpon>
@@ -5686,6 +5718,14 @@
       <DependentUpon>DB.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Staff\StaffCreate.cshtml" />
+    <Content Include="Content\sweetalert\sweet-alert.less" />
+    <Content Include="Content\sweetalert\sweet-alert-combine.less" />
+    <Content Include="Content\sweetalert\sweet-alert-animations.less" />
+    <Content Include="Content\bootstrap\variables.less" />
+    <Content Include="Content\bootstrap\mixins.less" />
+    <Content Include="Areas\Admin\Views\Staff\ViewDetails.cshtml" />
+    <Content Include="Areas\Admin\Views\Custommer\ListCustomer.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminArticle\ViewDetails.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -5696,10 +5736,16 @@
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery.mask.js" />
+    <Content Include="Scripts\jquery.mask.min.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jqueryui-1.9.2.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\ninja-slider.css" />
+    <Content Include="Scripts\ninja-slider.js" />
+    <Content Include="Scripts\sweetalert.js" />
+    <Content Include="Scripts\sweetalert.min.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -5714,6 +5760,7 @@
     <Compile Include="Areas\Admin\Controllers\StaffController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\SweetController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -5767,6 +5814,9 @@
     <Compile Include="Models\sysdiagram.cs">
       <DependentUpon>DB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\_Article.cs" />
+    <Compile Include="Models\_Category.cs" />
+    <Compile Include="Models\_Custommer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -6166,6 +6216,7 @@
     <Content Include="Views\Article\Do_dung_tre_em.cshtml" />
     <Content Include="Views\Article\Do_kim_khi.cshtml" />
     <Content Include="Views\Article\Dich_vu.cshtml" />
+    <Content Include="Views\Sweet\Alert.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

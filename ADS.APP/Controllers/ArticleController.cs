@@ -76,7 +76,7 @@ namespace ADS.APP.Controllers
                 free.ProvinceId = int.Parse(form["Province"].ToString());
                 free.DistrictId = int.Parse(form["District"].ToString());
 
-                free.PhoneNumber = int.Parse(SDT.ToString());
+                free.PhoneNumber = SDT.ToString();
                 free.UserNameFree = FullName;
                 free.EmailFree = Mail;
 
@@ -109,7 +109,8 @@ namespace ADS.APP.Controllers
             }
             return RedirectToAction("PageSuccess", "Article");
         }
-        [HttpPost]
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
         public ActionResult ArticleFreeAdd(ArticleViewModel Free_Article, IEnumerable<HttpPostedFileBase> fileselect, FormCollection form)
         {
             Category cate = new Category();
@@ -120,7 +121,7 @@ namespace ADS.APP.Controllers
 
 
 
-            if (Free_Article.AdvandeArticle != null)
+            if (Free_Article != null)
             {
                 free.Decreption = Free_Article.AdvandeArticle.Decreption;
                 free.Title = Free_Article.AdvandeArticle.Title;
@@ -130,7 +131,7 @@ namespace ADS.APP.Controllers
 
                 free.PhoneNumber = Free_Article.Cus.PhoneNumber;
                 free.UserNameFree = Free_Article.Cus.FullName;
-                free.EmailFree = Free_Article.Cus.Email;
+                free.EmailFree = Free_Article.Cus.EmailUser;
 
 
                 free.Price = Free_Article.AdvandeArticle.Price;

@@ -11,6 +11,7 @@
 
             }
             else {
+                $("#tempModal_lg").modal("hide");
                 table_ds.innerHtml = '';
                 $("#table_ds").load("/Admin/AdminArticle/Index #table1");
             }
@@ -50,8 +51,7 @@
             }
         });
     },
-    RestoreArticle: function (Id)
-    {
+    RestoreArticle: function (Id) {
         var dataRequest = {
             id: Id
         };
@@ -68,8 +68,7 @@
             }
         });
     },
-    DeleteCus: function (Id)
-    {
+    DeleteCus: function (Id) {
         var dataRequest = {
             id: Id
         };
@@ -86,6 +85,7 @@
             }
         });
     },
+    //Staff
     StaffCreate: function () {
         var dataRequest = {
 
@@ -98,10 +98,64 @@
 
             }
             else {
-                $("#modal_md").html(data);
-                $("#modal_md").modal("show");
+                $("#tempContainer").html(data);
+                $("#tempModal_md").modal("show");
             }
         });
     },
-    
+    DeleteStaff: function (Id) {
+        var dataRequest = {
+            id: Id
+        };
+
+        var url = "Admin/Staff/DeleteStaff";
+
+        common.CallXhttp(url, typeAjax.Post, dataTypeAjax.Html, dataRequest, true, true, function (data) {
+            if (data == null) {
+
+            }
+            else {
+                div.innerHtml = '';
+                $("#div").load("/Admin/Staff/Index #table_staff");
+            }
+        });
+    },
+    EditStaff: function (Id) {
+        var dataRequest = {
+            id: Id
+        };
+
+        var url = "Admin/Staff/ViewDetails";
+
+        common.CallXhttp(url, typeAjax.Get, dataTypeAjax.Html, dataRequest, true, true, function (data) {
+            if (data == null) {
+
+            }
+            else {
+                $("#tempContainer").html(data);
+                $("#tempModal_md").modal("show");
+            }
+        });
+    },
+    //End_Staff
+    ViewDetailArticle: function (Id) {
+        var dataRequest = {
+            id: Id
+        };
+
+        var url = "Admin/AdminArticle/ViewDetails";
+
+        common.CallXhttp(url, typeAjax.Get, dataTypeAjax.Html, dataRequest, true, true, function (data) {
+            if (data == null) {
+
+            }
+            else {
+                $("#tempContainer_lg").html(data);
+                $("#tempModal_lg").modal("show");
+            }
+        });
+
+    }
+
+
 }

@@ -13,10 +13,15 @@ namespace ADS.APP.Areas.Admin.Controllers
         ADS_Entities db = new ADS_Entities();
         public ActionResult Index()
         {
+            return View();
+        }
+
+        public ActionResult ListCustomer(string keyseach = "")
+        {
             CustommerViewModels model = new CustommerViewModels();
-            model.lstCustommer = db.Custommers.ToList();
+            model.lstCustommer = db.Custommers.Where(n => n.FullName.Contains(keyseach)).ToList();
             model.lstProvince = db.Provinces.ToList();
-            return View(model);
+            return PartialView(model);
         }
         public ActionResult Add()
         {
@@ -34,6 +39,20 @@ namespace ADS.APP.Areas.Admin.Controllers
             }
             List<Article> Fre = db.Articles.ToList();
             return Json(Fre, JsonRequestBehavior.AllowGet);
+        }
+        [HttpGet]
+        public JsonResult SeachCustommer(string keyseach)
+        {
+            var Cus = db.Custommers.Where(n => n.FullName.Contains(keyseach)).Select(a => new
+            {
+                id = a.Id,
+                fullname = a.FullName,
+                address = a.Address,
+                username = a.UserName,
+                pass = a.PassWord,
+                status = a.Status
+            }).ToList();
+            return Json(Cus, JsonRequestBehavior.AllowGet);
         }
 
 

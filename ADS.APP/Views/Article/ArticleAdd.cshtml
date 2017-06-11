@@ -10,6 +10,7 @@
 }
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<script src="~/Scripts/jquery.mask.js"></script>
 <div class="submit-ad main-grid-border">
     <div class="container">
         <h2 class="head">Đăng bài</h2>
@@ -36,7 +37,7 @@
                 @Html.ValidationMessageFor(n => n.AdvandeArticle.Decreption)
                 <div class="clearfix"></div>
                 <label>Giá</label>
-                @Html.TextBoxFor(n => n.AdvandeArticle.Price, new { @class = "phone col-md-6", @placeholder = "Giá" })
+                @Html.TextBoxFor(n => n.AdvandeArticle.Price, new { @id = "Price", @class = "phone col-md-6", @placeholder = "Giá", @onkeypress = "return keyPhone(event);" })
                 <div class="clearfix"></div>
                 <div class="upload-ad-photos">
                     <label>Hình ảnh :</label>
@@ -58,7 +59,7 @@
                     <input type="text" name="fullname" value="@cus.FullName" class="name" required="" />
                     <div class="clearfix"></div>
                     <label>Số điện thoại <span>*</span></label>
-                    <input type="text" name="phone" value="@cus.PhoneNumber" class="phone" required="" />
+                    <input type="text" name="phone" value="@cus.PhoneNumber" class="phone" required="" onkeypress="return keyPhone(event);" />
                     <div class="clearfix"></div>
                     <label>Địa chỉ Email<span>*</span></label>
                     <input type="text" name="addressemail" value="@cus.Email" class="email" required="" />
@@ -71,6 +72,24 @@
 
             }
         </div>
+        <script>
+            $('#Price').mask('000.000.000.000.000', { reverse: true });
+            function keyPhone(e) {
+                var keyword = null;
+                if (window.event) {
+                    keyword = window.event.keyCode;
+                } else {
+                    keyword = e.which;
+                }
+
+                if (keyword < 48 || keyword > 57) {
+                    if (keyword == 48 || keyword == 127) {
+                        return;
+                    }
+                    return false;
+                }
+            }
+        </script>
 
     </div>
 </div>

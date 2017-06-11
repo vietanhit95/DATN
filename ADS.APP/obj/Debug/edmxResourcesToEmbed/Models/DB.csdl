@@ -10,8 +10,8 @@
     <Property Name="ImageId" Type="Int32" />
     <Property Name="ProvinceId" Type="Int32" />
     <Property Name="Article_Type" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
-    <Property Name="Price" Type="Int32" />
-    <Property Name="PhoneNumber" Type="Int32" />
+    <Property Name="Price" Type="String" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="11" Unicode="true" FixedLength="false" />
     <Property Name="Create_Date" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="String" MaxLength="1" FixedLength="false" Unicode="true" />
     <Property Name="CategoryId" Type="Int32" />

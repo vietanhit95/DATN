@@ -53,6 +53,8 @@ D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.SqlServer.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\Microsoft.Web.Infrastructure.dll
+D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.dll
+D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.Mvc.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Helpers.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Mvc.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Razor.dll
@@ -62,6 +64,8 @@ D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Webpages.Razor.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\EntityFramework.SqlServer.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.xml
+D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.Mvc.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Razor.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Webpages.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Webpages.Deployment.xml
@@ -70,8 +74,4 @@ D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Helpers.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\System.Web.Mvc.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.dll
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.pdb
-D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.dll
-D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.Mvc.dll
-D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.xml
-D:\HOUSE\DATN\ADS.APP\ADS.APP\bin\PagedList.Mvc.xml
 D:\HOUSE\DATN\ADS.APP\ADS.APP\obj\Debug\ADS.APP.csprojResolveAssemblyReference.cache

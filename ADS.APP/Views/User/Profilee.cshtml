@@ -85,8 +85,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="graphs">
                 @using (Html.BeginForm("Logout", "User", FormMethod.Post))
                 {
-                    <div class="sign-up">
-                        <h2>Thông tin cá nhân</h2>
+                    <div class="sign-up" style="margin: 0px left !important">
+                        <h2>Thông tin tài khoản</h2>
                         @if (cus != null)
                         {
                             <div class="sign-u">
@@ -144,6 +144,44 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="clearfix"> </div>
                             </div>
                         }
+
+                    </div>
+                    <div style="width:50%; margin:0px right">
+                        <h2>Bài đăng của bạn</h2>
+                        <ul class="list">
+                            @*@if (Model.Count > 0)
+                            {
+
+                                foreach (var item in Model)
+                                {
+                                    Image img = db.Images.FirstOrDefault(n => n.ImageId == item.Id);*@
+                                    <a @*href="/Article/Detail/@item.Id"*@>
+                                        <li>
+                                            <img @*src="~/Image/User/@img.Name"*@ title="" alt="Image" />
+                                            <section class="list-left">
+                                                <h5 class="title">dsfdsfdsf</h5>
+                                                <span class="adprice">sdfdsfds</span>
+                                                <p class="catpath">Trang chủ » Dịch vụ</p>
+                                            </section>
+                                            <section class="list-right">
+                                                <span class="date">sdfdsf</span>
+                                                <span class="cityname">ádasdsad</span>
+                                            </section>
+                                            <div class="clearfix"></div>
+                                        </li>
+                                    </a>
+                                }
+                            }
+                            else
+                            {
+                                <a href="/Article/Detail">
+                                    <li>
+                                        Không tìm thấy dữ liệu
+                                        <div class="clearfix"></div>
+                                    </li>
+                                </a>
+                            }
+                        </ul>
 
                     </div>
                 }

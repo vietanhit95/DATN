@@ -31,8 +31,8 @@ var Category = {
 
             }
             else {
-                $("#modal_md").html(data);
-                $("#modal_md").modal("show");
+                $("#tempContainer_sm").html(data);
+                $("#tempModal_sm").modal("show");
             }
         });
     },

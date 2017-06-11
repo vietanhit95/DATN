@@ -1,11 +1,12 @@
-﻿@model  ADS.APP.Models.CustommerViewModels
-@using ADS.APP.Models;
+﻿@using ADS.APP.Models;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     ADS_Entities db = new ADS_Entities();
 }
 <script src="~/Scripts/ADS/Admin.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="//code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
 <div class="page-bar">
     <ul class="page-breadcrumb">
         <li>
@@ -69,78 +70,38 @@
                                         <i class="fa fa-plus"></i>
                                     </button>*@
                                 @*<a class="btn sbold green" onclick="Custommer.ViewCreate()">
-                                    Thêm mới <i class="fa fa-plus"></i>
-                                </a>*@
+                                        Thêm mới <i class="fa fa-plus"></i>
+                                    </a>*@
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div id="sample_3_filter" class="dataTables_filter pull-right">
                                 <label>
-                                    Tìm kiếm: <input type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="sample_3">
+                                    Tìm kiếm: <input id="seach" type="search" class="form-control input-sm input-small input-inline" placeholder="" aria-controls="sample_3">
                                 </label>
                             </div>
+                            <script>
+                                $("#seach").keyup(function () {
+                                    var keyseach = $("#seach").val();
+                                    $.ajax({
+                                        url: "/Admin/Custommer/ListCustomer",
+                                        type: "GET",
+                                        dataType: "html",
+                                        data: { keyseach },
+                                        success: function (data) {
+                                            $("#listCustomer").html(data);
+                                        }
+                                    })
+                                })
+
+
+                            </script>
                         </div>
                     </div>
                 </div>
                 <div id="sample_1_wrapper" class="dataTables_wrapper no-footer">
-                    <div class="table-scrollable">
-                        <table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="table_cus" role="grid" aria-describedby="sample_1_info">
-                            <thead>
-                                @*<tr role="row">
-                                        <th class="sorting_disabled" rowspan="1" colspan="1" aria-label="" style="width: 66px;">
-                                            <label class="mt-checkbox mt-checkbox-single mt-checkbox-outline">
-                                                <input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes">
-                                                <span></span>
-                                            </label>
-                                        </th>
-                                        <th class="sorting_asc" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-sort="ascending" aria-label=" Username : activate to sort column descending" style="width: 146px;"> Username </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Email : activate to sort column ascending" style="width: 222px;"> Email </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Status : activate to sort column ascending" style="width: 106px;"> Status </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Joined : activate to sort column ascending" style="width: 111px;"> Joined </th>
-                                        <th class="sorting" tabindex="0" aria-controls="sample_1" rowspan="1" colspan="1" aria-label=" Actions : activate to sort column ascending" style="width: 114px;"> Actions </th>
-                                    </tr>*@
-                                <tr>
-                                    <td class="w50 text-center">
-                                        STT
-                                    </td>
-                                    <td class="w120 text-center">
-                                        Họ và Tên
-                                    </td>
-                                    <td class="w150 text-center">
-                                        Địa chỉ
-                                    </td>
-                                    <td class="w150 text-center">
-                                        Tên đăng nhập
-                                    </td>
-                                    <td class="w120 text-center">
-                                        Mật khẩu
-                                    </td>
-                                    <td class="w80 text-center">
-                                        Trạng thái
-                                    </td>
-                                    <td>...</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (Model != null)
-                                {
-                                    foreach (var Cus in Model.lstCustommer)
-                                    {
-                                        <tr>
-                                            <td>@((Cus.Id + 1).ToString("0"))</td>
-                                            <td>@Cus.FullName</td>
-                                            <td>@Cus.Address</td>
-                                            <td>@Cus.UserName</td>
-                                            <td>@Cus.PassWord</td>
-                                            <td>@Cus.Status</td>
-                                            <td>
-                                                <a href="javascript:void(0)" onclick="Admin.DeleteCus(@Cus.Id)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                            </td>
-                                        </tr>
-                                    }
-                                }
-                            </tbody>
-                        </table>
+                    <div class="table-scrollable" id="listCustomer">
+                        @{ Html.RenderAction("ListCustomer", "Custommer", new { Area = "Admin" });}
                     </div>
                 </div>
             </div>
@@ -148,5 +109,3 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 </div>
-
-

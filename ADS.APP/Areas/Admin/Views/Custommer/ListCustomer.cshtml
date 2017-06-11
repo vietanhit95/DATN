@@ -1,0 +1,48 @@
+﻿@model  ADS.APP.Models.CustommerViewModels
+
+
+<table class="table table-striped table-bordered table-hover table-checkable order-column dataTable no-footer" id="table_cus" role="grid" aria-describedby="sample_1_info">
+    <thead>
+        <tr>
+            <td class="w50 text-center">
+                STT
+            </td>
+            <td class="w120 text-center">
+                Họ và Tên
+            </td>
+            <td class="w150 text-center">
+                Địa chỉ
+            </td>
+            <td class="w150 text-center">
+                Tên đăng nhập
+            </td>
+            <td class="w120 text-center">
+                Mật khẩu
+            </td>
+            <td class="w80 text-center">
+                Trạng thái
+            </td>
+            <td>...</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var Cus in Model.lstCustommer)
+            {
+                <tr class="rowCus" data-fullname="@Cus.FullName">
+                    <td>@((Cus.Id + 1).ToString("0"))</td>
+                    <td>@Cus.FullName</td>
+                    <td>@Cus.Address</td>
+                    <td>@Cus.UserName</td>
+                    <td>@Cus.PassWord</td>
+                    <td>@Cus.Status</td>
+                    <td>
+                        <a href="javascript:void(0)" onclick="Admin.DeleteCus(@Cus.Id)" class="btn btn-danger btn-xs" title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

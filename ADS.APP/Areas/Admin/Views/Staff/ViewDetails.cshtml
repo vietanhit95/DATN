@@ -1,0 +1,48 @@
+﻿@model  ADS.APP.Models.Staff
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<div class="modal-content">
+    <div class="modal-header panel-primary">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">Thêm mới nhân viên</h4>
+    </div>
+    @using (Html.BeginForm("StaffEdit", "Staff", FormMethod.Post))
+    {
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(n=>n.Id)
+        <div class="modal-body">
+            <div class="form-group">
+                <label>Họ và tên</label>
+                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.FullName)
+            </div>
+            <div class="form-group">
+                <label>Địa chỉ</label>
+                @Html.TextBoxFor(n => n.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Address)
+            </div>
+            
+            <div class="form-group">
+                <label>Tên đăng nhập</label>
+                @Html.TextBoxFor(n => n.UserName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.UserName)
+            </div>
+            <div class="form-group">
+                <label>Mật khẩu</label>
+                @Html.TextBoxFor(n => n.PassWord, new { @class = "form-control password" })
+                @Html.ValidationMessageFor(x => x.PassWord)
+            </div>
+            <div class="form-group">
+                <label>Trạng thái</label>
+                @Html.TextBoxFor(n => n.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Address)
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn green" @*onclick="common.Submitform('fCreate', true)"*@>Cập nhật</button>
+            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+        </div>
+    }
+</div>
+
+

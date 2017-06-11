@@ -143,9 +143,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </script>
                     <!-- //FlexSlider -->
                     <div class="product-details">
-                        <h4>Danh mục : <a href="#">@category.SingleOrDefault(n => n.Id == Model.CategoryId).Name</a></h4>
-                        <h4>Giá : <strong>@(Model.Price.ToString() + "Vnđ")</strong></h4>
-                        <p><strong>Tiêu đề </strong>:@Model.Title</p>
+                        <h4>Danh mục : <a href="#"> @category.SingleOrDefault(n => n.Id == Model.CategoryId).Name</a></h4>
+                        <h4>Giá : <strong style="color:#c90927"> @( Model.Price.ToString() + " đ")</strong></h4>
+                        <p><strong>Tiêu đề </strong>: @Model.Title</p>
                         <p><strong>Nội dung</strong> : @Model.Decreption</p>
 
                     </div>
@@ -166,7 +166,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         <div class="col-md-3 biseller-column">
                                             <a href="/Article/Detail/@arti.Id">
                                                 <img src="~/Content/images/p1.jpg" />
-                                                <span class="price">&#36; @arti.Price</span>
+                                                <span style="color:#c90927" class="price">@(Model.Price.ToString() + " đ")</span>
                                             </a>
                                             <div class="ad-info">
                                                 <h5>@arti.Title</h5>
@@ -220,7 +220,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         <div class="condition">
                             <p class="p-price">Số điện thoại:</p>
-                            <p style="float: right;margin-top: -21px;width: 50%;">@("0" + Model.PhoneNumber.ToString())</p>
+                            <p style="float: right;margin-top: -21px;width: 50%;">@(Model.PhoneNumber.ToString())</p>
                             <div class="clearfix"></div>
                         </div>
                         <div class="itemtype">

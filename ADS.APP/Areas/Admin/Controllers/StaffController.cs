@@ -33,19 +33,58 @@ namespace ADS.APP.Areas.Admin.Controllers
             var Cus = db.Staffs.ToList().Find(n => n.UserName == staff.UserName);
             if (Cus == null)
             {
-                db.Staffs.Add(staff);
+                Staff _cus = new Staff();
+                _cus.FullName = staff.FullName;
+                _cus.Status = "Y";
+                _cus.UserName = staff.UserName;
+                _cus.StaffType = "Y";
+                _cus.PassWord = staff.PassWord;
+                _cus.Address = staff.Address;
+                db.Staffs.Add(_cus);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Staff", new { Areas = "Admin" });
+            }
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult DeleteStaff(int id)
+        {
+            var Staff = db.Staffs.SingleOrDefault(n => n.Id == id);
+            if (Staff != null)
+            {
+                db.Staffs.Remove(Staff);
                 db.SaveChanges();
             }
-            var lstCustomer = db.Staffs.Select(a => new
+            List<Staff> Fre = db.Staffs.ToList();
+            return Json(Fre, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ViewDetails(int id)
+        {
+            var Staff = db.Staffs.SingleOrDefault(n => n.Id == id);
+            if (Staff != null)
             {
-                id = a.Id,
-                fullname = a.FullName,
-                address = a.Address,
-                username = a.UserName,
-                status = a.Status,
-            }).ToList();
-
-            return Json(lstCustomer, JsonRequestBehavior.AllowGet);
+                return View(Staff);
+            }
+            return View();
+        }
+        [HttpPost]
+        public ActionResult StaffEdit(Staff staf)
+        {
+            var staff = db.Staffs.SingleOrDefault(n => n.Id == staf.Id);
+            if (staff != null)
+            {
+                staff.FullName = staf.FullName;
+                staff.Status = staf.Status;
+                staff.UserName = staf.UserName;
+                staff.StaffType = staf.StaffType;
+                staff.PassWord = staf.PassWord;
+                staff.Address = staf.Address;
+                TryUpdateModel(staff);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Staff", new { Areas = "Admin" });
+            }
+            return View();
         }
     }
 }

@@ -1,32 +1,28 @@
 ﻿@model  ADS.APP.Models.Category
 <script src="~/Scripts/jquery.validate.min.js"></script>
 <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-<div class="modal-content">
-    <div class="modal-header panel-primary">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-        <h4 class="modal-title">Thêm mới danh mục</h4>
-    </div>
 
-    @*@using (Ajax.BeginForm("CategoryCreate", "Category", new { Area = "Admin" }, new AjaxOptions { HttpMethod = "POST", OnSuccess = "Category.OnSuccess(data,'004')" }, new { @id = "fCreate" }))
-        {*@
-    @using (Html.BeginForm("CategoryCreate", "Category", FormMethod.Post))
-    {
-        @Html.ValidationSummary(true)
-        <div class="modal-body">
-            <div class="form-group">
-                <label>Tên danh mục</label>
-                @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x=>x.Name)
-            </div>
-            <div class="form-group">
-                <label>Thứ tự danh mục</label>
-                @Html.TextBoxFor(n => n.CategoryId, new { @class = "form-control" })
-                @Html.ValidationMessageFor(x => x.CategoryId)
-            </div>
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn green" @*onclick="common.Submitform('fCreate', true)"*@>Cập nhật</button>
-            <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
-        </div>
-    }
+<div class="modal-header panel-default">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+    <h4 class="modal-title">Thêm mới danh mục</h4>
 </div>
+@using (Html.BeginForm("CategoryCreate", "Category", FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    <div class="modal-body">
+        <div class="form-group">
+            <label>Tên danh mục</label>
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name)
+        </div>
+        <div class="form-group">
+            <label>Thứ tự danh mục</label>
+            @Html.TextBoxFor(n => n.CategoryId, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.CategoryId)
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn green" @*onclick="common.Submitform('fCreate', true)"*@>Cập nhật</button>
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Đóng</button>
+    </div>
+}
