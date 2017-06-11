@@ -1,0 +1,68 @@
+﻿@model List<ADS.APP.Models._Article>
+@using ADS.APP.Models;
+@{
+    Layout = null;
+    ADS_Entities db = new ADS_Entities();
+    List<_Article> _article = Model;
+}
+
+
+<h2 class="font-blue-soft">Bài đăng tương tự</h2>
+
+<ul id="flexiselDemo3">
+    @if (Model != null)
+    {
+        foreach (var item in Model.Skip(4))
+        {
+            <li>
+                @foreach (var item1 in _article.Take(4))
+                {
+                    <div class="col-md-3 biseller-column">
+                        <a href="/Article/Detail/@item1.Id">
+                            @foreach (var IMG in item1.img.Take(1))
+                        {
+                                <img src="~/Image/User/@IMG.Name" />
+                            }
+                            <span style="color:#c90927" class="price">@(item1.Price.ToString() + " đ")</span>
+                        </a>
+                        <div class="ad-info">
+                            <h5>@item.Title</h5>
+                            <span>@(item1.Create_Date)</span>
+                        </div>
+                    </div>
+
+                }
+            </li>
+        }
+    }
+</ul>
+
+
+<script type="text/javascript">
+    $(window).load(function () {
+        $("#flexiselDemo3").flexisel({
+            visibleItems: 1,
+            animationSpeed: 1000,
+            autoPlay: true,
+            autoPlaySpeed: 5000,
+            pauseOnHover: true,
+            enableResponsiveBreakpoints: true,
+            responsiveBreakpoints: {
+                portrait: {
+                    changePoint: 480,
+                    visibleItems: 1
+                },
+                landscape: {
+                    changePoint: 640,
+                    visibleItems: 1
+                },
+                tablet: {
+                    changePoint: 768,
+                    visibleItems: 1
+                }
+            }
+        });
+
+    });
+</script>
+<script type="text/javascript" src="~/Content/js/jquery.flexisel.js"></script>

@@ -302,7 +302,7 @@ namespace ADS.APP.Controllers
         }
         public ActionResult Mobie(int? page)
         {
-            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+            return View(db.Articles.OrderByDescending(n => n.Id).Where(n => n.CategoryId == 1 && n.Status == "Y").ToPagedList(page ?? 1, 8));
         }
 
         #endregion
@@ -336,7 +336,7 @@ namespace ADS.APP.Controllers
         }
         public ActionResult Laptop(int? page)
         {
-            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+            return View(db.Articles.OrderByDescending(n => n.Id).Where(n => n.CategoryId == 2 && n.Status == "Y").ToPagedList(page ?? 1, 8));
         }
         #endregion
         #region PC
@@ -369,7 +369,36 @@ namespace ADS.APP.Controllers
         }
         public ActionResult PC(int? page)
         {
-            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+            return View(db.Articles.OrderByDescending(n => n.Id).Where(n => n.CategoryId == 6 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+        }
+        public ActionResult SamePost()
+        {
+            List<Image> img = new List<Image>();
+            var free = (from a in db.Articles
+                        where a.Status == "W"
+                        orderby a.Id descending
+                        select new _Article
+                        {
+                            Id = a.Id,
+                            Decreption = a.Decreption,
+                            Title = a.Title,
+                            ProvinceId = a.ProvinceId,
+                            Article_Type = a.Article_Type,
+                            Price = a.Price,
+                            PhoneNumber = a.PhoneNumber,
+                            Create_Date = a.Create_Date,
+                            Status = a.Status,
+                            CategoryId = a.CategoryId,
+                            CardId = a.CardId,
+                            UserNameFree = a.UserNameFree,
+                            EmailFree = a.EmailFree,
+                            CommentId = a.CommentId,
+                            CustommerId = a.CustommerId,
+                            DistrictId = a.DistrictId,
+                            img = db.Images.Where(n => n.ImageId == a.Id).Take(1)
+                        }).ToList();
+
+            return PartialView(free);
         }
         #endregion
         #region Ô tô và xe máy
@@ -402,7 +431,7 @@ namespace ADS.APP.Controllers
         }
         public ActionResult Oto(int? page)
         {
-            return View(db.Articles.OrderBy(n => n.Id).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8));
+            return View(db.Articles.OrderByDescending(n => n.Id).Where(n => n.CategoryId == 3 && n.Status == "Y").ToPagedList(page ?? 1, 8));
         }
         #endregion
         #region Đồ dùng gia đình
@@ -683,12 +712,16 @@ namespace ADS.APP.Controllers
         {
             return View();
         }
+        public ActionResult Seach()
+        {
+            return View();
+        }
         [HttpPost]
-        public ActionResult Seach(string keyseach, FormCollection form)
+        public ActionResult Seach(string keyseach, FormCollection form,int ? page)
         {
             int ProvinceId = int.Parse(form["Province"].ToString());
             int CategoryId = int.Parse(form["Menu"].ToString());
-            List<Article> Article = db.Articles.Where(n => n.Title.Contains(keyseach) && n.ProvinceId == ProvinceId && n.CategoryId == CategoryId).ToList();
+            var Article = db.Articles.OrderByDescending(n=>n.Id).Where(n => n.Title.Contains(keyseach) && n.ProvinceId == ProvinceId && n.CategoryId == CategoryId).ToPagedList(page ?? 1, 20);
             return View(Article);
         }
 

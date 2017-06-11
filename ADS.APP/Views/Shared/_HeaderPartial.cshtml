@@ -47,7 +47,7 @@
                                     data: { },
                                     success: function (data) {
                                         let html = ''
-
+                                        html += '<option value="">Chọn tỉnh/Thành phố</option>'
                                         $.each(data, function (i, v) {
                                             html += '<option value="' + v.id + '">' + v.type + ' ' + v.name + '</option>'
                                         });
@@ -63,6 +63,7 @@
                                         let html = ''
 
                                         $.each(data, function (i, v) {
+                                           
                                             html += '<option value="' + v.id + '" data-tokens="' + v.name + '">' + v.name + '</option>'
                                         });
                                         $('#Menu').append(html);
@@ -78,8 +79,9 @@
                                         data: { ProvinceId: Province },
                                         success: function (data) {
                                             let html = ''
-
+                                            html += '<option value="">Chọn huyện</option>'
                                             $.each(data, function (i, v) {
+                                                
                                                 html += '<option value="' + v.id + '">' + v.type + ' ' + v.name + '</option>'
                                             });
                                             $('#District').html(html);

@@ -6203,7 +6203,6 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.1.1.min.map" />
     <Content Include="Views\Article\Mobie.cshtml" />
-    <Content Include="Views\Article\Seach.cshtml" />
     <Content Include="Views\Article\ArticleAdd.cshtml" />
     <Content Include="Views\Article\Laptop.cshtml" />
     <Content Include="Views\Article\PC.cshtml" />
@@ -6217,6 +6216,8 @@
     <Content Include="Views\Article\Do_kim_khi.cshtml" />
     <Content Include="Views\Article\Dich_vu.cshtml" />
     <Content Include="Views\Sweet\Alert.cshtml" />
+    <Content Include="Views\Article\SamePost.cshtml" />
+    <Content Include="Views\Article\Seach.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

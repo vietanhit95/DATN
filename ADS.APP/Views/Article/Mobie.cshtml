@@ -99,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     });
                 }
             });
-            $("select").change(function () {
+            $("#select").change(function () {
                 $(this).parents("form").submit();
             });
         });
@@ -117,7 +117,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!-- Mobiles -->
     <div class="total-ads main-grid-border">
         <div class="container">
-            @using (Html.BeginForm("Seach", "Article", FormMethod.Post))
+            @using (Html.BeginForm("Seach", "Article", FormMethod.Post, new { @id="seacharticle"}))
             {
                 <div class="select-box">
 
@@ -164,12 +164,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <div class="featured-ad">
                                     <a href="/Article/Detail/@item1.Id">
                                         <div class="featured-ad-left">
-                                            <img src="~/Image/User/@img.Name" title="ad image" alt="" />
+                                            <img src="~/Image/User/@img.Name" title="ad image" alt="" style="width:100px; height:120px" />
                                         </div>
-                                        <div class="featured-ad-right">
-                                            <h4>@item1.Title</h4>
-                                            <p>@(item1.Price.ToString() + "đ")</p>
-                                        </div>
+                                        <section class="list-left">
+                                            <h4 class="title">@item1.Title</h4>
+                                            <span style="color:#c90927" class="adprice">@(item1.Price.ToString() + "đ")</span>
+                                            
+                                        </section>
                                         <div class="clearfix"></div>
                                     </a>
                                 </div>
@@ -220,11 +221,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     {
                                                         Image img = db.Images.FirstOrDefault(n => n.ImageId == item.Id);
                                                         <a href="/Article/Detail/@item.Id">
-                                                            <li>
-                                                                <img src="~/Image/User/@img.Name" title="" alt="Image" />
+                                                            <li style="height:160px">
+                                                                <img src="~/Image/User/@img.Name" title="" alt="Image" style="width:100px" height="120px" />
                                                                 <section class="list-left">
                                                                     <h5 class="title">@item.Title</h5>
-                                                                    <span class="adprice">@(item.Price.ToString() + "đ")</span>
+                                                                    <span style="color:#c90927" class="adprice">@(item.Price.ToString() + "đ")</span>
                                                                     <p class="catpath">Trang chủ » Điện thoại di động</p>
                                                                 </section>
                                                                 <section class="list-right">
@@ -235,6 +236,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                             </li>
                                                         </a>
                                                     }
+
                                                 }
                                                 else
                                                 {
@@ -246,12 +248,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                     </a>
                                                 }
                                             </ul>
+
                                         </div>
+
                                     </div>
                                 </div>
-                                <ul class="text-center">
-                                    @Html.PagedListPager(Model, p => Url.Action("Mobie", new { page = p }))
-                                </ul>
+
+                                @Html.PagedListPager(Model, p => Url.Action("Mobie", new { page = p }))
+
                             </div>
                         </div>
                     </div>

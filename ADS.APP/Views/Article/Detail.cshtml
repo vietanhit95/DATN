@@ -153,59 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <br />
                     <!-- slider -->
                     <div class="trend-ads" style="margin-top:50px;border-top: 1px solid #eee;border-bottom: 1px solid #eee;padding: 20px 0;margin: 20px 0;">
-                        <h2 class="font-blue-soft">Bài đăng tương tự</h2>
-                        <ul id="flexiselDemo3">
-
-                            <li>
-                                @if (article != null)
-                                {
-                                    foreach (var arti in article.Take(4))
-                                    {
-
-
-                                        <div class="col-md-3 biseller-column">
-                                            <a href="/Article/Detail/@arti.Id">
-                                                <img src="~/Content/images/p1.jpg" />
-                                                <span style="color:#c90927" class="price">@(Model.Price.ToString() + " đ")</span>
-                                            </a>
-                                            <div class="ad-info">
-                                                <h5>@arti.Title</h5>
-                                                <span>@(arti.Create_Date)</span>
-                                            </div>
-                                        </div>
-                                    }
-                                }
-                                
-                            </li>
-                        </ul>
-                        <script type="text/javascript">
-                            $(window).load(function () {
-                                $("#flexiselDemo3").flexisel({
-                                    visibleItems: 1,
-                                    animationSpeed: 1000,
-                                    autoPlay: true,
-                                    autoPlaySpeed: 5000,
-                                    pauseOnHover: true,
-                                    enableResponsiveBreakpoints: true,
-                                    responsiveBreakpoints: {
-                                        portrait: {
-                                            changePoint: 480,
-                                            visibleItems: 1
-                                        },
-                                        landscape: {
-                                            changePoint: 640,
-                                            visibleItems: 1
-                                        },
-                                        tablet: {
-                                            changePoint: 768,
-                                            visibleItems: 1
-                                        }
-                                    }
-                                });
-
-                            });
-                        </script>
-                        <script type="text/javascript" src="~/Content/js/jquery.flexisel.js"></script>
+                        @{ Html.RenderAction("SamePost", "Article");}
                     </div>
 
                     <!-- //slider -->
